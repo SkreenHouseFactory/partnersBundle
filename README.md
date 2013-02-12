@@ -1,0 +1,4 @@
+partnersBundle
+==============
+
+for partners integration
