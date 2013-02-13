@@ -1,4 +1,4 @@
 #liberation
 p_liberation:
-    pattern:  /partner/liberation
-    defaults: { _controller: SkreenHouseFactoryPartnersBundle:Liberation:main }
+    pattern:  /liberation/
+    defaults: { _controller: SkreenHouseFactoryPartnersBundle:liberation:main }

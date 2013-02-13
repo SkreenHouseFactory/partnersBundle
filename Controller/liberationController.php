@@ -33,17 +33,26 @@ class LiberationController extends Controller
     public function mainAction(Request $request)
     {
 			//	$this->blockDomain($request);
-      /*$api = new ApiManager($this->container->getParameter('kernel.environment'), '.json', 2);
-      $datas = $api->fetch('search/' .urlencode(str_replace('.', '%2E',  $request->get('q'))), 
-                           array('img_width' => 160,
+      $api = new ApiManager($this->container->getParameter('kernel.environment'), '.json', 2);
+      $data = $api->fetch('www/home/tv-replay', 
+                           array('without_footer' => true,
+                                 'with_programs' => true,
+                                 'img_width' => 160,
                                  'img_height' => 200,
-                                 'nb_results' => 7,
-                                 'facets' => $facets));
-      //echo $api->url;
-      //print_r($datas);
-			*/
-      $response = $this->render('SkreenHouseFactoryV3Bundle:Liberation:main.html.twig', array(
-        //'results' => $datas,
+                                 'with_teaser' => true,
+                                 'with_pass' => true,
+                                 'slider_width' => 990));
+     //echo $api->url;
+     //print_r($datas);
+
+			$page = file_get_contents('http://www.liberation.fr/partenaires/100/');
+			$page = str_replace('<!-- contenu partenaire ici -->', '{% block content endblock %}', $page);
+			$fichier = fopen(dirname(__FILE__) . '/../Resources/views/liberation.html.twig','w+');
+			fputs($fichier, $page);
+			fclose($fichier);
+			
+      $response = $this->render('SkreenHouseFactoryPartnersBundle:Liberation:main.html.twig', array(
+        'home' => $data,
       ));
 
       $maxage = 300;

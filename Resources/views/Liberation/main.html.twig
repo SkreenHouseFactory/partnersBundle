@@ -5,5 +5,45 @@
 
 
 {% block content %}
-HERE
+{% stylesheets
+    '@SkreenHouseFactoryPartnersBundle/Resources/public/less/liberation.less'
+      filter='less,?yui_css'
+      output='css/liberation.css'
+      %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+{% endstylesheets %}
+
+<div id="view-home">
+  {% for slider in home.sliders if slider.id is defined %}
+    {% if loop.first %}
+      <div class="main-slider">
+      <div class="main-slider-title">
+      <h1>Replay TV</h1>
+      </div>
+      <div class="carousel-container">{% include 'SkreenHouseFactoryV3Bundle:Main:_carousel.html.twig' with {slider: slider, skip_autoload: true} %}</div>
+      </div>
+    {% else %}
+      {% if loop.index == 2 %}<div class="container">{% else %}<hr/>{% endif %}
+      <a name="{{ slider.name }}"></a>
+      {% include 'SkreenHouseFactoryV3Bundle:Main:_slider.html.twig' with {slider: slider} %}
+    {% endif %}
+  {% endfor %}
+  </div>
+	<br/>
+	<p align="right"><a href="http://www.myskreen.com/tv-replay">Replay</a> avec mySkreen</p>
+</div>
+
+{% javascripts
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery-1.8.3.min.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/bootstrap.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/modernizr.min.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/inheritance.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/slider.js' 
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/helpers.js' 
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/ui.js' 
+
+    filter='?yui_js' 
+    output='js/compiled/liberation.js'  %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
 {% endblock %}

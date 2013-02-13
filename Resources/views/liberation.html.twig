@@ -1,0 +1,929 @@
+<!DOCTYPE html> 
+<html lang="fr" xmlns:og="http://ogp.me/ns#">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Toute l'actualité avec Libération</title>
+    
+        
+    
+    
+    <script>
+    /*
+* JS Redirection Mobile
+*
+* Developed by
+* Sebastiano Armeli-Battana (@sebarmeli) - http://www.sebastianoarmelibattana.com
+* Dual licensed under the MIT or GPL Version 3 licenses.
+* @version 0.9.5
+* https://github.com/sebarmeli/JS-Redirection-Mobile-Site
+*/
+if(!window.SA){window.SA={};}SA.redirection_mobile=function(m){var c=function(y){var x=new Date();x.setTime(x.getTime()+y);return x;};var q=function(C){if(!C){return;}var x=document.location.search,D=x&&x.substring(1).split("&"),z=0,B=D.length;for(;z<B;z++){var y=D[z],A=y&&y.substring(0,y.indexOf("="));if(A===C){return y.substring(y.indexOf("=")+1,y.length);}}};var a=navigator.userAgent.toLowerCase(),s="false",f="true",w=m||{},r=w.noredirection_param||"noredirection",t=w.mobile_prefix||"m",o=w.mobile_url,d=w.mobile_scheme?w.mobile_scheme+":":document.location.protocol,p=document.location.host,i=q(r),j=o||(t+"."+(!!p.match(/^www\./i)?p.substring(4):p)),k=w.cookie_hours||1,g=w.keep_path||false,v=w.keep_query||false,h=w.tablet_url||j,b=!!(a.match(/(iPhone|iPod|blackberry|android 0.5|fennec|htc|lg|midp|mmp|mobile|nokia|opera mini|opera mobi|palm|pocket|psp|sgh|smartphone|symbian|treo mini|Playstation Portable|SonyEricsson|Samsung|MobileExplorer|PalmSource|Benq|Windows Phone|Windows Mobile|IEMobile|Windows CE|Nintendo Wii)/i));if(document.referrer.indexOf(j)>=0||i===f){if(window.sessionStorage){window.sessionStorage.setItem(r,f);}else{document.cookie=r+"="+f+";expires="+c(3600*1000*k).toUTCString();}}var u=(window.sessionStorage)?(window.sessionStorage.getItem(r)===f):false,l=document.cookie?(document.cookie.indexOf(r)>=0):false;if(!!(a.match(/(iPad|SCH-I800|xoom|kindle)/i))){var e=(w.tablet_redirection===f||!!w.tablet_url)?true:false;b=false;}if((e||b)&&!(l||u)){if(w.beforeredirection_callback){if(!w.beforeredirection_callback.call(this)){return;}}var n="";if(g){n+=document.location.pathname;}if(v){n+=document.location.search;}if(e){document.location.href=d+"//"+h+n;}else{if(b){document.location.href=d+"//"+j+n;}}}};
+/* added: our set cookie helper */
+SA.set_cookie=function(a,b,c,d,e,f){var g;if(!e){var h=new Date;e=new Date,d||(d=31536e6-1),e.setTime(h.getTime()+d)}f||(f="/"),g=encodeURIComponent(a)+"="+encodeURIComponent(b),d!=="session"&&(g+="; expires="+e.toUTCString()),g+="; path="+f,c&&(g+="; domain="+c),document.cookie=g};
+    SA.redirection_mobile ({
+        noredirection_param: "no_mobile",
+        mobile_url : "http://mobile.liberation.fr".replace('http://', ''),
+        cookie_hours : "2",
+        keep_query: true,
+        keep_path: true,
+        beforeredirection_callback: function() {
+            SA.set_cookie('xtref', document.referrer, ".liberation.fr", 10 * 1000); // set referrer in cookie for 30 seconds
+            return true;
+        }
+    }); 
+    </script>
+    
+
+    <link type="application/rss+xml" rel="alternate" href="/rss/9/" title="Libération - A la Une" />
+    
+
+    <meta name="description" content="Tout savoir sur les dernières actualités politiques, monde, société, sports, écologie avec le journal en ligne Libération." />
+    <meta name="keywords" content="actualités, news" />
+
+    
+        <link rel="stylesheet" href="http://s0.libe.com/cache/css/f6551fd88713.css" type="text/css" media="screen, print" />
+    
+
+    
+    
+</head>
+<body class="dummy barry-white">
+    <script type="text/javascript">
+    
+    
+        /*  */ var _sf_startpt=(new Date()).getTime(); var sas_tmstp=Math.round(Math.random()*1e10),sas_masterflag=1;function getCookie(name,defaultvalue){name+="=";if(document.cookie.length>0){offset=document.cookie.indexOf(name);if(offset!=-1){offset+=name.length,end=document.cookie.indexOf(";",offset);return unescape(document.cookie.substring(offset,end!=-1?end:document.cookie.length))}}return defaultvalue}function setCookie(name,value,domain,duration,expire,path){var cookie;if(!expire){var today=new Date;expire=new Date,duration||(duration=31536e6-1),expire.setTime(today.getTime()+duration)}path||(path="/"),cookie=encodeURIComponent(name)+"="+encodeURIComponent(value),duration!=="session"&&(cookie+="; expires="+expire.toUTCString()),cookie+="; path="+path,domain&&(cookie+="; domain="+domain),document.cookie=cookie}function SmartAdServer(sas_pageid,sas_formatid,sas_target){var sas_master;sas_masterflag==1?(sas_masterflag=0,sas_master="M"):sas_master="S";var scriptUrl="http://ww14.smartadserver.com/call/pubj/"+sas_pageid+"/"+sas_formatid+"/"+sas_master+"/"+sas_tmstp+"/"+escape(sas_target)+"?",script='<script src="'+scriptUrl+'"></scr'+"ipt>";return isPubActive==1?script:!1}function writeAd(d,content,format_str){typeof isPubActive!="undefined"&&!!isPubActive&&d.write(content)}function displayAd(d,sas_pageid,sas_formatid,sas_target,format_str){if(typeof isPubActive!="undefined"&&typeof SmartAdServer!="undefined"&&!!isPubActive){var result=SmartAdServer(sas_pageid,sas_formatid,sas_target);result&&writeAd(d,result,format_str)}}
+    
+    
+    // If user has no session cookie, he can't be logged in.
+    // If he has, the following script will tell us the user status
+    var session_cookie = getCookie('PHPSESSID') || getCookie('__tsso');
+    var libeUserInfo = {};
+    if (session_cookie) {
+        document.write('<script type="text/javascript" src="http://session.liberation.fr/jogger/session_info/?confirm=' + escape(session_cookie) + '"></' + 'script>');
+    } else {
+        libeUserInfo = { "access_level": "BAS", "authenticated": false };
+    }
+    </script>
+    <script type="text/javascript">
+    var accessLevel = (typeof libeUserInfo['access_level'] == 'undefined') ? 'BAS' : libeUserInfo['access_level'];
+    var isPubActive = !(accessLevel == 'PRE' || accessLevel == 'ESS' || accessLevel == 'MAYDAY');
+    
+    /* Add css classes to the body with basic user state, early in the process */
+    var bodyClass = ' ' + 'access-' + accessLevel.toLowerCase();
+    bodyClass += ' ' + 'auth-' + (libeUserInfo['authenticated'] ? 'logged' : 'unlogged');
+    if (getCookie('libeBarState', 'opened') == 'closed') {
+        bodyClass += ' ' + 'init-bar-is-closed';
+    }
+    document.body.className = document.body.className + bodyClass;
+
+    </script>
+    
+    
+    
+    <div id="mainContent" class="dummy site-liberation">
+        
+            <div class="ad-top">
+                <div class="megaban">
+                    <div class="block-ad">
+    <script type="text/javascript"> 
+        var sas_formatid = 225;
+        var sas_pageid = "252/82917";
+        var sas_target = "ambient=summary";
+
+        
+            displayAd(document, sas_pageid, sas_formatid, sas_target, "megaban_top1");
+        
+    </script>
+</div>
+
+                </div>
+            </div>
+        
+        <div id="header-liberation">
+            
+    
+
+
+
+
+
+<div class="header-base">
+    <!-- Top -->
+    <div class="home">
+        <a href="http://www.liberation.fr" title="Retour à l'accueil de Libération.fr"><span class="logo"></span></a>
+    </div>
+    <div class="sites-info-search">
+        <ul class="sites">
+            <li class="next"><a href="http://next.liberation.fr"><span class="logo"></span></a></li>
+            <li class="ecrans"><a href="http://www.ecrans.fr/"><span class="logo"></span></a></li>
+            <li class="labo"><a href="http://www.liberation.fr/labo,17"><span class="logo"></span></a></li>
+            <li class="boutique"><a href="http://www.liberation.fr/boutique,100010"><span class="logo"></span></a></li>
+        </ul>
+        <div class="info">
+            <span> Dernière mise à jour : <strong>il y a 27 secondes</strong></span>
+        </div>
+        <form class="search" action="/recherche/">
+            <input type="submit" value="" />
+            <input type="text" placeholder="Recherche (ex: éducation, rebonds)" name="q" id="id_q" />
+        </form>
+    </div>
+    <div class="links">
+        <div class="lnk1">
+            <h2>Services</h2>
+            <ul>
+                <li><a href="http://shopping.liberation.fr" target="_blank">Shopping</a></li>
+                <li><a href="http://pointscommuns.liberation.fr/" target="_blank">Rencontres</a></li>
+                <li><a href="http://cours-anglais.liberation.fr" target="_blank">Cours d&#39;anglais</a></li>
+                <li><a href="http://boutiqueliberation.myshopify.com" target="_blank">Anciens numéros</a></li>
+                <li><a href="http://petites-annonces.liberation.fr/" target="_blank">Petites annonces</a></li>
+            </ul>
+        </div>
+        <div class="lnk2 cat-zoneabo">
+            <h2 class="ft-c">Edition Abonnés</h2>
+            <ul>
+                <li><a href="http://journal.liberation.fr/publication/liberation/1162/">Le journal numérique</a></li>
+                
+                    <li><a href="http://www.liberation.fr/mobile,100098">Mobile / Tablette</a></li>
+                
+                <li><a href="/accounts/offres/">S'abonner à Libé</a></li>
+                <li><a href="/accounts/print-subscription/management/">Gérer mon abonnement papier</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="digitalpaper cat-zoneabo">
+        <a href="http://journal.liberation.fr/publication/liberation/1162/" target="_blank" class="dl bg-c">Télécharger Libération</a>
+        <a class="offers-hide-pre abo" href="/accounts/offres/">Abonnez-vous<br /> 12&euro; / mois</a>
+        
+        <a href="http://journal.liberation.fr/publication/liberation/1162/" target="_blank" class="une"><img src="http://md0.libe.com/api/libe/v2/paperpage/189594/?format=jpg&amp;size=x148" /></a>
+        <div class="mask"></div>
+    </div>
+    <!-- // Top -->
+    <!-- Nav Bar -->
+    <ul class="nav nav-no-js">
+        
+            <li class="cat-laune on">
+                <h2 class="nav1">
+                    <div class="on"><a href="http://www.liberation.fr/" title="Actualités"><span class="bg-c"></span>Actualités</a></div>
+                </h2>
+                <ul class="nav2">
+                    
+                        
+                            <li><a href="http://www.liberation.fr/"  class=" ">A la Une<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/editorial,56"  class=" ">Éditos<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/politiques,11"  class=" ">Politiques<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/societe,12"  class=" ">Société<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/monde,10"  class=" ">Monde<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/economie,13"  class=" ">Économie<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/ecofutur,100181"  class=" ">EcoFutur<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/medias,62"  class=" ">Médias<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/vous,15"  class=" ">Vous<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/sports,14"  class=" ">Sports<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/terre,89"  class=" ">Terre<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/sciences,90"  class=" ">Sciences<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/desintox,99721"  class=" ">Désintox<span class="bg-c"></span></a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+            <li class="cat-rebonds">
+                <h2 class="nav1">
+                    <div><a href="http://www.liberation.fr/debats,18" title="Débats"><span class="bg-c"></span>Débats</a></div>
+                </h2>
+                <ul class="nav2">
+                    
+                        
+                            <li><a href="http://www.liberation.fr/debats,18"  class=" ">Accueil<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/editorial,56"  class=" ">Éditos<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/chroniques,44"  class=" ">Chroniques<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/tribune,23"  class=" ">Tribunes<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/forums,24"  class=" ">Forums<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/tchats,25"  class=" ">Tchats<span class="bg-c"></span></a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+            <li class="cat-culture">
+                <h2 class="nav1">
+                    <div><a href="http://www.liberation.fr/culture,16" title="Culture"><span class="bg-c"></span>Culture</a></div>
+                </h2>
+                <ul class="nav2">
+                    
+                        
+                            <li><a href="http://www.liberation.fr/culture,16"  class=" ">Accueil<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://next.liberation.fr/cinema,58"  class=" ">Cinéma<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://next.liberation.fr/musique,59"  class=" ">Musique<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/livres,60"  class=" ">Livres<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/theatre,28"  class=" ">Théâtre<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://next.liberation.fr/design,99927"  class=" ">Design&amp;Archi<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://next.liberation.fr/mode,99924"  class=" ">Mode<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://next.liberation.fr/photographie,99965"  class=" ">Photographie<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://next.liberation.fr/arts,99964"  class=" ">Arts<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/programmes-podcasts/040144-bandes-annonces-cine"  class=" ">Bandes-annonces ciné<span class="bg-c"></span></a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+            <li class="cat-evenementslibe">
+                <h2 class="nav1">
+                    <div><a href="http://www.liberation.fr/evenements-libe,100200" title="Événements"><span class="bg-c"></span>Événements</a></div>
+                </h2>
+                <ul class="nav2">
+                    
+                        
+                            <li><a href="http://www.liberation.fr/les-lundis-de-liberation,100212"  class=" ">Les Lundis de Libé<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/forum-bobigny-2013,100224"  class=" ">Forum Bobigny<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/forum-grenoble-2013,100216"  class=" ">Forum de Grenoble<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/forums-ile-de-france,100205"  class=" ">Forum de Nanterre<span class="bg-c"></span></a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+            <li class="cat-ecrans">
+                <h2 class="nav1">
+                    <div><a href="http://www.ecrans.fr" title="Tech / web"><span class="bg-c"></span>Tech / web</a></div>
+                </h2>
+                <ul class="nav2">
+                    
+                        
+                            <li><a href="http://www.ecrans.fr"  class=" ">Accueil Ecrans.fr<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.ecrans.fr/+-internet-+.html"  class=" ">Internet<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.ecrans.fr/+-jeux-+.html"  class=" ">Jeux vidéo<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.ecrans.fr/+-television-+.html"  class=" ">Télévision / Radio<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.ecrans.fr/+-telephone-+.html"  class=" ">Téléphone<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.ecrans.fr/+-dvd-+.html"  class=" ">DVD<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://next.liberation.fr/auto,99928"  class=" ">Auto<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://tele.liberation.fr/"  class=" ">Programme TV<span class="bg-c"></span></a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+            <li class="cat-labo">
+                <h2 class="nav1">
+                    <div><a href="http://www.liberation.fr/labo,17" title="Vidéo/Photo"><span class="bg-c"></span>Vidéo/Photo</a></div>
+                </h2>
+                <ul class="nav2">
+                    
+                        
+                            <li><a href="http://www.liberation.fr/labo,17"  class=" ">Accueil<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/video,19"  class=" ">Vidéo<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/diaporama,21"  class=" ">Diaporama<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/audio,20"  class=" ">Audio<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/programmes-podcasts,22"  class=" ">Podcasts<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/programmes-podcasts/040144-bandes-annonces-cine"  class=" ">Bandes-annonces ciné<span class="bg-c"></span></a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+            <li class="cat-blogs">
+                <h2 class="nav1">
+                    <div><a href="http://www.liberation.fr/blogs,26" title="Blog"><span class="bg-c"></span>Blog</a></div>
+                </h2>
+                <ul class="nav2">
+                    
+                        
+                            <li><a href="http://www.liberation.fr/blogs,26"  class=" ">Tous les blogs<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://bruxelles.blogs.liberation.fr/coulisses/"  class=" ">Coulisses de Bruxelles, UE<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                    
+                        
+                            <li><a href="http://washington.blogs.liberation.fr/great_america/"  class=" ">Great America<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <li><a href="http://sciences.blogs.liberation.fr/home/"  class=" ">{Sciences²}<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://classes.blogs.liberation.fr/soule/"  class=" ">C&#39;est classe !<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://vosphotos.blogs.liberation.fr/libe/"  class=" ">Vos photos<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://bordsdepistes.liberation.fr"  class=" ">Bords de Pistes<span class="bg-c"></span></a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+            <li class="cat-voyages">
+                <h2 class="nav1">
+                    <div><a href="http://voyages.liberation.fr" title="Voyages"><span class="bg-c"></span>Voyages</a></div>
+                </h2>
+                <ul class="nav2">
+                    
+                        
+                            <li><a href="http://voyages.liberation.fr/"  class=" ">Accueil<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://voyages.liberation.fr/grandes-destinations"  class=" ">Carnets de voyage<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://voyages.liberation.fr/dossiers"  class=" ">Dossiers<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://voyages.liberation.fr/voyager-autrement"  class=" ">Voyager autrement<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://voyages.liberation.fr/voir-et-lire"  class=" ">Voir et lire<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://voyages.liberation.fr/suivez-le-guide"  class=" ">Voyage pratique<span class="bg-c"></span></a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+            <li class="cat-monlibe">
+                <h2 class="nav1">
+                    <div><a href="http://www.liberation.fr/monlibe/" title="monLibé"><span class="bg-c"></span>monLibé</a></div>
+                </h2>
+                <ul class="nav2">
+                    
+                        
+                            <li><a href="http://www.liberation.fr/monlibe/home/"  class=" ">Ma page perso<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/monlibe/messages/"  class=" ">Ma messagerie<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/monlibe/user/comments"  class=" ">Mes commentaires<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/accounts/donnees-personnelles/"  class=" ">Mes infos personnelles<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/monlibe/notification/settings/"  class=" ">Mes préférences email<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/monlibe/avantages/list"  class=" ">Invitations culturelles<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/monlibe/favorites/"  class=" ">Mes favoris<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/monlibe/newsletter/"  class=" ">Mes newsletters<span class="bg-c"></span></a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+            <li class="cat-zoneabo">
+                <h2 class="nav1">
+                    <div><a href="http://www.liberation.fr/abonnes/" title="Edition abonnés"><span class="bg-c"></span>Edition abonnés</a></div>
+                </h2>
+                <ul class="nav2">
+                    
+                        
+                            <li><a href="http://journal.liberation.fr/publication/liberation/"  class=" ">Journal numérique<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/abonnes/publication/liberation/articles-list/" data-perm="access_publication_articleslist"  class="js-checkperm ">Les articles du journal<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/recherche/"  class=" ">Archives<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/abonnes/les-unes/" data-perm="access_frontpagesarchives"  class="js-checkperm ">Les unes depuis 1973<span class="bg-c"></span></a></li>
+                        
+                    
+                        
+                            <li><a href="http://www.liberation.fr/accounts/mon-abonnement/"  class=" ">Gérer mon abonnement<span class="bg-c"></span></a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+    </ul>
+    <script type="text/javascript">
+        var paywall = {
+             groups: {
+    "PRE": [
+        "access_frontpagesarchives", 
+        "access_publication_articleslist", 
+        "access_publication_digitalpaper"
+    ], 
+    "ESS": [
+        "access_publication_articleslist"
+    ]
+},
+             url: "/abonnes/paywall/",
+             fallbackUrl: "/"
+         };
+         var libeUrls = {
+            'login' : '/jogger/login/?next=/partenaires/100/'
+         }
+    </script>
+<!-- // Nav Bar -->
+</div>
+
+
+            
+                <div class="megaban">
+                    <div class="block-ad">
+    <script type="text/javascript"> 
+        var sas_formatid = 2556;
+        var sas_pageid = "252/82917";
+        var sas_target = "ambient=summary";
+
+        
+            displayAd(document, sas_pageid, sas_formatid, sas_target, "megaban_top2");
+        
+    </script>
+</div>
+
+                </div>
+            
+        </div>
+        <div id="core-liberation" class=""><!-- parent for style -->
+            
+{% block content endblock %}
+
+            <div class="clear"></div>
+        </div>
+        
+            <div class="ads megaban">
+            <div class="block-ad">
+    <script type="text/javascript"> 
+        var sas_formatid = 276;
+        var sas_pageid = "252/82917";
+        var sas_target = "ambient=summary";
+
+        
+            displayAd(document, sas_pageid, sas_formatid, sas_target, "megaban_bottom");
+        
+    </script>
+</div>
+
+            </div>
+        
+        <div id="footer-liberation">
+            
+    
+        
+
+
+
+
+    <div class="hot-topics">
+        <h5>En ce moment</h5>
+        <ul>
+            
+                <li><a href="http://www.liberation.fr/forum-grenoble-2013,100216">Grenoble 2013 : Jeunes, débattez-vous !</a></li>
+            
+                <li><a href="http://www.liberation.fr/forum-bobigny-2013,100224">Forum de Bobigny : le mouvement c&#39;est la ville</a></li>
+            
+                <li><a href="http://www.liberation.fr/40-ans-liberation,100217">Libération a 40 ans</a></li>
+            
+                <li><a href="http://www.liberation.fr/mali-france,100214">La France en guerre au Mali</a></li>
+            
+            
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+<div class="footer-base">
+    <div class="links">
+        <div class="abo">
+    <a href="/accounts/offres/" class="visual"><img src="http://s0.libe.com/libe/img/common/img-footer.jpg" width="243" height="130" alt="abonnement à Libération numérique" /></a>
+    <a href="/accounts/offres/">
+        <h2>Abonnez-vous à Libération</h2>
+        <h3>À partir de 1&euro; seulement jusqu'à la fin du mois</h3>
+    </a>
+    <ul>
+        <li class="offers-hide-ess offers-hide-pre"><a href="/accounts/offres/">&gt; Abonnement numérique</a></li>
+        <li class="offers-hide-quo"><a href="http://abo.liberation.fr">&gt; Abonnement papier</a></li>
+        <li><a href="/accounts/print-subscription/management/">&gt; Gérer votre abo papier</a></li>
+        <li><a href="http://boutiqueliberation.myshopify.com">&gt; Anciens numéros</a></li>
+        <li><a href="http://www.liberation.fr/boutique,100010">&gt; Boutique Libération</a></li>
+    </ul>
+</div>
+
+        <div class="monlibe">
+            
+                
+            
+                
+                    <h5><a href="http://www.liberation.fr/debats,18">Débats</a></h5>
+                
+            
+                
+                    <h5><a href="http://www.liberation.fr/culture,16">Culture</a></h5>
+                
+            
+                
+                    <h5><a href="http://www.liberation.fr/evenements-libe,100200">Événements</a></h5>
+                
+            
+                
+                    <h5><a href="http://www.ecrans.fr">Tech / web</a></h5>
+                
+            
+                
+                    <h5><a href="http://www.liberation.fr/labo,17">Vidéo/Photo</a></h5>
+                
+            
+                
+                    <h5><a href="http://www.liberation.fr/blogs,26">Blog</a></h5>
+                
+            
+                
+                    <h5><a href="http://voyages.liberation.fr">Voyages</a></h5>
+                
+            
+                
+                    <h5><a href="http://www.liberation.fr/monlibe/">monLibé</a></h5>
+                
+            
+                
+                    <h5><a href="http://www.liberation.fr/abonnes/">Edition abonnés</a></h5>
+                
+            
+        </div>
+        <div class="news">
+            <h5><a href="http://www.liberation.fr/">Actualités</a></h5>
+            <ul>
+                
+                    <li><a href="http://www.liberation.fr/">A la Une</a></li>
+                    
+                
+                    <li><a href="http://www.liberation.fr/editorial,56">Éditos</a></li>
+                    
+                
+                    <li><a href="http://www.liberation.fr/politiques,11">Politiques</a></li>
+                    
+                
+                    <li><a href="http://www.liberation.fr/societe,12">Société</a></li>
+                    
+                
+                    <li><a href="http://www.liberation.fr/monde,10">Monde</a></li>
+                    
+                
+                    <li><a href="http://www.liberation.fr/economie,13">Économie</a></li>
+                    
+                
+                    <li><a href="http://www.liberation.fr/ecofutur,100181">EcoFutur</a></li>
+                    
+                
+                    <li><a href="http://www.liberation.fr/medias,62">Médias</a></li>
+                    
+                        </ul><ul>
+                    
+                
+                    <li><a href="http://www.liberation.fr/vous,15">Vous</a></li>
+                    
+                
+                    <li><a href="http://www.liberation.fr/sports,14">Sports</a></li>
+                    
+                
+                    <li><a href="http://www.liberation.fr/terre,89">Terre</a></li>
+                    
+                
+                    <li><a href="http://www.liberation.fr/sciences,90">Sciences</a></li>
+                    
+                
+                    <li><a href=""></a></li>
+                    
+                
+                    <li><a href="http://www.liberation.fr/desintox,99721">Désintox</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="services">
+            <h5>Services</h5>
+            <ul>
+                
+                    <li><a href="http://emploi.liberation.fr">Emploi</a></li>
+                    
+                
+                    <li><a href="http://pointscommuns.liberation.fr/">Rencontres</a></li>
+                    
+                
+                    <li><a href="http://petites-annonces.liberation.fr/">Petites annonces</a></li>
+                    
+                
+                    <li><a href="http://cours-anglais.liberation.fr">Cours d&#39;anglais</a></li>
+                    
+                
+                    <li><a href="http://shopping.liberation.fr">Shopping</a></li>
+                    
+                
+                    <li><a href="http://boutiqueliberation.myshopify.com">Anciens numéros</a></li>
+                    
+                
+                    <li><a href="http://liberation.spreadshirt.fr">T-shirts</a></li>
+                    
+                
+                    <li><a href=" http://petites-annonces.liberation.fr">Petites annonces</a></li>
+                    
+                        </ul><ul>
+                    
+                
+                    <li><a href="http://tele.liberation.fr/programmes-tv/ce-soir.html">Programme TV</a></li>
+                    
+                
+                    <li><a href="http://libefood.liberation.fr/la-fourchette">Restaurants</a></li>
+                    
+                
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="references">
+    <ul>
+        <li class="first">&copy; Libération</li>
+        <li><a href="/contacts/">Contacts</a></li>
+        <li><a href="http://www.espaces-liberation.fr/">Publicité</a></li>
+        <li><a href="http://www.liberation.fr/licence/">Licence</a></li>
+        <li><a href="http://www.liberation.fr/donnees-personnelles/">Données personnelles</a></li>
+        <li><a href="http://www.liberation.fr/cguv/">
+            Conditions générales de vente Libé +</a></li>
+        <li><a href="http://resume.liberation.fr/">Index</a></li>
+        <li><a href="http://www.liberation.fr/rss/">RSS</a></li>
+        <li><a data-cookiedomain=".liberation.fr" class="mobileversionlink" href="http://mobile.liberation.fr/partenaires/100/">Version mobile</a></li>
+    </ul>
+        <ul>
+        <li class="first">Un site de Libération Network</li>
+        <li>Site hébergé par <a title="Pilot Systems" href="http://www.pilotsystems.net/">
+        <strong>Pilot Systems</strong></a></li>
+        <li>Site Web designed by <a title="e-artsup" href="http://www.e-artsup.net/"><strong>e-artsup</strong></a></li>
+    </ul>
+</div>
+
+
+</div>
+
+    
+
+            
+                <div class="block-ad">
+    <script type="text/javascript"> 
+        var sas_formatid = 94;
+        var sas_pageid = "252/82917";
+        var sas_target = "ambient=summary";
+
+        
+            displayAd(document, sas_pageid, sas_formatid, sas_target, "dhtml");
+        
+    </script>
+</div>
+
+            
+            
+            
+        </div>
+    </div>
+    
+    
+    
+
+<div id="bar-liberation" data-url="/monlibe/bar/" data-nextparam="/partenaires/100/"> 
+    <div class="content">
+        <!-- First spaces -->
+        <div class="close">
+            <a href="#">x</a>
+        </div>
+        <div class="open">
+            <a href="#">
+                <span class="arrow"></span>
+                Avec MonLibé, commentez l'actualité
+            </a>
+        </div>
+        <div class="login">
+            <h3>Commentez et archivez gratuitement vos articles favoris avec MonLibé</h3>
+            <a href="/accounts/register/" class="subscribe">Je m'inscris</a>
+            <span>ou</span><a href="/jogger/login/" class="connect">se connecter</a>
+        </div>
+        <!-- // First spaces -->
+        <!-- Popin Contents -->
+        <div id="login-box-content">
+            <form id="bar-liberation-loginform" action="/jogger/login/" method="post">
+<ul>
+<li><label for="bar-liberation-email">Email:</label> <input id="bar-liberation-email" type="text" name="email" maxlength="75" /></li>
+<li><label for="bar-liberation-password">Mot de passe:</label> <input type="password" name="password" id="bar-liberation-password" /></li>
+<li><label for="bar-liberation-remember_me">Se souvenir de moi:</label> <input type="checkbox" name="remember_me" id="bar-liberation-remember_me" /></li>
+<li class="btn-basic"><input type="submit" id="bar-liberation-loginbox_submit" value="S'identifier"/></li>
+</ul>
+</form>
+
+            <p class="forgot-password"> <a href="/accounts/password_reset/">Mot de passe oublié ?</a> </p>
+        </div>
+        <!-- // Popin Contents -->
+    </div>
+</div>
+
+    
+    
+<script type="text/javascript" src="http://s0.libe.com/cache/js/802bfa71007c.js"></script>
+
+
+    <script type="text/javascript" src="http://s0.libe.com/cache/js/83e42de4bef8.js"></script>
+
+    <script type='text/javascript'>
+        var ezMarkerType = 'asq';
+        var ezC = ["g:liberation","d:liberation","flt:0", "cat:"];
+        var ezFmt = 'liberation';
+        (function(){
+           var s = document.createElement("script");
+           s.type = "text/javascript";
+           s.src = document.location.protocol + "//asq.ezakus.net/marker/";
+           s.async = true;
+           var head = document.head || document.getElementsByTagName("head")[0];
+           head.appendChild(s);
+        })();
+    </script>
+
+    <!-- chartbeat -->
+    <script type='text/javascript'>
+    var _sf_async_config={};     
+    _sf_async_config.uid = 43601;       
+    _sf_async_config.domain = 'liberation.fr';   
+    (function(){       
+        function loadChartbeat() {         
+            window._sf_endpt=(new Date()).getTime();
+                var e = document.createElement('script');
+                e.setAttribute('language', 'javascript');
+                e.setAttribute('type', 'text/javascript');
+                e.setAttribute('src',(('https:' == document.location.protocol) ? 'https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/' : 'http://static.chartbeat.com/') + 'js/chartbeat.js');         
+                document.body.appendChild(e);       
+            }       
+            var oldonload = window.onload;       
+            window.onload = (typeof window.onload != 'function') ? loadChartbeat : function() { oldonload(); loadChartbeat(); };     
+    })(); 
+    </script>
+    <!-- // chartbeat -->
+    
+
+    
+        
+    
+</body>
+</html>
