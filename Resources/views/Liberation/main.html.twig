@@ -20,7 +20,7 @@
       <div class="main-slider-title">
       <h1>Replay TV</h1>
       </div>
-      <div class="carousel-container">{% include 'SkreenHouseFactoryV3Bundle:Main:_carousel.html.twig' with {slider: slider, skip_autoload: true} %}</div>
+      {#<div class="carousel-container">{% include 'SkreenHouseFactoryV3Bundle:Main:_carousel.html.twig' with {slider: slider, skip_autoload: true} %}</div>#}
       </div>
     {% else %}
       {% if loop.index == 2 %}<div class="container">{% else %}<hr/>{% endif %}
@@ -38,6 +38,7 @@
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/bootstrap.js'
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/modernizr.min.js'
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/inheritance.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/api.js' 
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/slider.js' 
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/helpers.js' 
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/ui.js' 
@@ -46,4 +47,5 @@
     output='js/compiled/liberation.js'  %}
     <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
+<script>API.init();</script>
 {% endblock %}
