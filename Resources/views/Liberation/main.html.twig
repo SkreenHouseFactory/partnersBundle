@@ -20,7 +20,7 @@
       <div class="main-slider-title">
       <h1>Replay TV</h1>
       </div>
-      {#<div class="carousel-container">{% include 'SkreenHouseFactoryV3Bundle:Main:_carousel.html.twig' with {slider: slider, skip_autoload: true} %}</div>#}
+      <div class="carousel-container">{% include 'SkreenHouseFactoryV3Bundle:Main:_carousel.html.twig' with {slider: slider, skip_autoload: true, skip_like: true} %}</div>
       </div>
     {% else %}
       {% if loop.index == 2 %}<div class="container">{% else %}<hr/>{% endif %}
