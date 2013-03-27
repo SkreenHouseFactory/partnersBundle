@@ -19,29 +19,21 @@ use SkreenHouseFactory\v3Bundle\Api\ApiManager;
 
 class LiberationController extends Controller
 {
-		private function blockDomain(Request $request) {
-      if ($this->get('kernel')->getEnvironment() == 'prod' && 
-          !strstr($request->getHost(), 'www.') && 
-          !strstr($request->getHost(), 'preprod.')) {
-        throw $this->createNotFoundException('Page does not exist');
-      }
-		}
-
     /**
     * homes
     */
     public function mainAction(Request $request)
     {
-			//	$this->blockDomain($request);
       $api = new ApiManager($this->container->getParameter('kernel.environment'), '.json', 2);
-      $data = $api->fetch('www/home/tv-replay', 
-                           array('without_footer' => true,
-                                 'with_programs' => true,
-                                 'img_width' => 160,
-                                 'img_height' => 200,
-                                 'with_teaser' => true,
-                                 'with_pass' => true,
-                                 'slider_width' => 990));
+      $data = $api->fetch('www/home/tv-replay', array(
+				'without_footer' => true,
+				'with_programs' => true,
+				'img_width' => 160,
+				'img_height' => 200,
+				'with_teaser' => true,
+				'with_pass' => true,
+				'slider_width' => 990
+			));
      //echo $api->url;
      //print_r($datas);
 
@@ -50,7 +42,7 @@ class LiberationController extends Controller
 			$fichier = fopen(dirname(__FILE__) . '/../Resources/views/liberation.html.twig','w+');
 			fputs($fichier, $page);
 			fclose($fichier);
-			
+
       $response = $this->render('SkreenHouseFactoryPartnersBundle:Liberation:main.html.twig', array(
         'home' => $data,
       ));
