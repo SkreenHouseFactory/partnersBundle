@@ -14,11 +14,13 @@
 {% endstylesheets %}
 
 <div id="view-home">
-	<div class="pull-right">
-		<form class="search" id="myskreen-search" action="http://www.myskreen.com/programmes/" method="get" accept-charset="utf-8">
-		<input type="text" name="q" value="" placeholder="Un programme, un acteur, une chaîne, etc."><input type="submit" value="Rechercher avec mySkreen">
-		</form>
-	</div>
+  {#
+  <div class="pull-right">
+    <form class="search" id="myskreen-search" action="http://www.myskreen.com/programmes/" method="get" accept-charset="utf-8">
+    <input type="text" name="q" value="" placeholder="Un programme, un acteur, une chaîne, etc."><input type="submit" value="Rechercher avec mySkreen">
+    </form>
+  </div>
+  #}
   {% for slider in home.sliders if slider.id is defined %}
     {% if loop.first %}
       <div class="main-slider">
@@ -34,8 +36,8 @@
     {% endif %}
   {% endfor %}
   </div>
-	<br/>
-	<p align="right"><a href="http://www.myskreen.com/tv-replay">Replay</a> avec mySkreen</p>
+  <br/>
+  <p align="right"><a href="http://www.myskreen.com/tv-replay">Replay</a> avec mySkreen</p>
 </div>
 
 {% javascripts
@@ -58,11 +60,11 @@ API.init();
 UiView.init($('#view-home'));
 
 setTimeout(function(){
-	$('#myskreen-search').live('submit', function(e){
-		e.preventDefault();
-		document.location = $(this).attr('action') + encodeURIComponent($(this).find('input[name="q"]').attr('value'));
-		return false;
-	});
+  $('#myskreen-search').live('submit', function(e){
+    e.preventDefault();
+    document.location = $(this).attr('action') + encodeURIComponent($(this).find('input[name="q"]').attr('value'));
+    return false;
+  });
 }, 1000);
 </script>
 
