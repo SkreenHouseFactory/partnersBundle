@@ -37,7 +37,7 @@
   {% endfor %}
   </div>
   <br/>
-  <p align="right"><a href="http://www.myskreen.com/tv-replay">Replay</a> avec mySkreen</p>
+  <p align="right"><a href="http://www.myskreen.com/programme-tv">Replay</a> avec <a href="http://www.myskreen.com">mySkreen</a></p>
 </div>
 
 {% javascripts
@@ -67,6 +67,27 @@ setTimeout(function(){
   });
 }, 1000);
 </script>
+
+<script type="text/javascript">
+<!--
+xtnv = document;        //parent.document or top.document or document         
+xtsd = "http://logliberation";
+xtsite = "386916";
+xtn2 = "1";        // level 2 site ID
+xtpage = "MySkreen";        //page name (with the use of :: to create chapters)
+xtdi = "";        //implication degree
+xt_multc = "";		//all the xi indicators (like "&x1=...&x2=....&x3=...")
+xt_an = "";        //user ID
+xt_ac = "";        //category ID
+//do not modify below
+if (window.xtparam!=null){window.xtparam+="&ac="+xt_ac+"&an="+xt_an+xt_multc;}
+else{window.xtparam="&ac="+xt_ac+"&an="+xt_an+xt_multc;};
+//-->
+</script>
+<script type="text/javascript" src="http://s0.libe.com/cache/js/1883037ffeac.js"></script>
+<noscript>
+<img width="1" height="1" alt="" src="http://logliberation.xiti.com/hit.xiti?s=386916&s2=1&p=MySkreen&di=&an=&ac=" >
+</noscript>
 
 {% include 'SkreenHouseFactoryV3Bundle::_ga.html.twig' %}
 {% endblock %}
