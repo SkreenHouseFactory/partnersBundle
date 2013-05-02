@@ -1,0 +1,63 @@
+{% extends 'SkreenHouseFactoryPartnersBundle::programmetvcom.html.twig' %}
+
+{% block title %}title{% endblock %}
+{% block description %}desc{% endblock %}
+
+{% block content %}
+{% stylesheets
+    '@SkreenHouseFactoryPartnersBundle/Resources/public/less/programmetvcom.less'
+      filter='less,?yui_css'
+      output='css/programmetvcom.css'
+      %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+{% endstylesheets %}
+
+<div id="view-home">
+  {#
+  <div class="pull-right">
+    <form class="search" id="myskreen-search" action="http://www.myskreen.com/programmes/" method="get" accept-charset="utf-8">
+    <input type="text" name="q" value="" placeholder="Un programme, un acteur, une chaîne, etc."><input type="submit" value="Rechercher avec mySkreen">
+    </form>
+  </div>
+  #}
+  {% for slider in home.sliders if slider.id is defined %}
+    {% if loop.first %}
+      <div class="main-slider">
+      <div class="main-slider-title">
+      <h1>Replay TV</h1>
+      </div>
+      <div class="carousel-container">{% include 'SkreenHouseFactoryV3Bundle:Main:_carousel.html.twig' with {slider: slider, skip_autoload: true, skip_like: true} %}</div>
+      </div>
+    {% else %}
+      {% if loop.index == 2 %}<div class="container">{% else %}<hr/>{% endif %}
+      <a name="{{ slider.name }}"></a>
+      {% include 'SkreenHouseFactoryV3Bundle:Main:_slider.html.twig' with {slider: slider} %}
+    {% endif %}
+  {% endfor %}
+  </div>
+  <br/>
+  <p align="right"><a href="http://www.myskreen.com/programme-tv">Replay</a> avec <a href="http://www.myskreen.com">mySkreen</a></p>
+</div>
+
+{% javascripts
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery-1.8.3.min.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/bootstrap.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/modernizr.min.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/inheritance.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/_api_env.js' 
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/api.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/slider.js' 
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/helpers.js' 
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/_ui.js' 
+
+    filter='?yui_js' 
+    output='js/compiled/liberation.js'  %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script>
+API.init();
+UiView.init($('#view-home'));
+</script>
+
+{% include 'SkreenHouseFactoryV3Bundle::_ga.html.twig' with {tag : 'UA-6151896-16'} %}
+{% endblock %}

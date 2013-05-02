@@ -2,3 +2,7 @@
 p_liberation:
     pattern:  /liberation/
     defaults: { _controller: SkreenHouseFactoryPartnersBundle:liberation:main }
+#programmetvcom
+p_programmetvcom:
+    pattern:  /programmetvcom/
+    defaults: { _controller: SkreenHouseFactoryPartnersBundle:programmetvcom:main }
