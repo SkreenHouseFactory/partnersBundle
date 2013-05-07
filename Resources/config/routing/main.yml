@@ -6,3 +6,15 @@ p_liberation:
 p_programmetvcom:
     pattern:  /programmetvcom/
     defaults: { _controller: SkreenHouseFactoryPartnersBundle:programmetvcom:main }
+#directmatin
+p_directmatin:
+    pattern:  /directmatin/
+    defaults: { _controller: SkreenHouseFactoryPartnersBundle:directmatin:main }
+#directmatin selection
+p_directmatin_selection:
+    pattern:  /directmatin/{homeslug}/selection/{id}-{slug}/
+    defaults: { _controller: SkreenHouseFactoryV3Bundle:Content:selection, partner: DirectMatin }
+    requirements:
+        id: \d+
+        slug: "[^/]+"
+        homeslug: "[^/]+"

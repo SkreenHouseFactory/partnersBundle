@@ -38,7 +38,7 @@ class LiberationController extends Controller
      //print_r($datas);
 
       $page = file_get_contents('http://www.liberation.fr/partenaires/100/');
-      $page = str_replace('<!-- contenu partenaire ici -->', '{% block content endblock %}', $page);
+      $page = str_ireplace(array('<head>','<!-- contenu partenaire ici -->'), array('<head><meta name="robots" content="noindex, nofollow">','{% block content endblock %}'), $page);
       $fichier = fopen(dirname(__FILE__) . '/../Resources/views/liberation.html.twig','w+');
       fputs($fichier, $page);
       fclose($fichier);

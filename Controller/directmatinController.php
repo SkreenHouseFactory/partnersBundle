@@ -17,41 +17,65 @@ use Symfony\Component\HttpFoundation\Response;
 
 use SkreenHouseFactory\v3Bundle\Api\ApiManager;
 
-class LiberationController extends Controller
+use \DOMDocument;
+use \DOMXPath;
+
+class DirectmatinController extends Controller
 {
-    /**
-    * homes
-    */
-    public function mainAction(Request $request)
-    {
-      $api = new ApiManager($this->container->getParameter('kernel.environment'), '.json', 2);
-      $data = $api->fetch('www/home/tv-replay', array(
-        'without_footer' => true,
-        'with_programs' => true,
-        'img_width' => 160,
-        'img_height' => 200,
-        'with_teaser' => true,
-        'with_pass' => true,
-        'slider_width' => 990
-      ));
-     //echo $api->url;
-     //print_r($datas);
+  /**
+  * homes
+  */
+  public function mainAction(Request $request)
+  {
+    $api = new ApiManager($this->container->getParameter('kernel.environment'), '.json', 2);
+    $data = $api->fetch('www/home/tv-replay', array(
+      'without_footer' => true,
+      'with_programs' => true,
+      'img_width' => 160,
+      'img_height' => 200,
+      'with_teaser' => true,
+      'with_pass' => true,
+      'slider_width' => 990
+    ));
+   //echo $api->url;
+   //print_r($datas);
 
-      $page = file_get_contents('http://www.liberation.fr/partenaires/100/');
-      $page = str_replace('<!-- contenu partenaire ici -->', '{% block content endblock %}', $page);
-      $fichier = fopen(dirname(__FILE__) . '/../Resources/views/liberation.html.twig','w+');
-      fputs($fichier, $page);
-      fclose($fichier);
+    //$page = utf8_encode(file_get_contents('http://www.programme-tv.com/'));
+    //$page = preg_replace('/<div id="content">(.*?)<\/div>/i', '<div id="content">{% block content endblock %}</div>', $page);
 
-      $response = $this->render('SkreenHouseFactoryPartnersBundle:Liberation:main.html.twig', array(
-        'home' => $data,
-      ));
+    $dom = new DOMDocument;
+    libxml_use_internal_errors(TRUE);
+    $dom->loadHTMLFile('http://www.directmatin.fr/myskreen');
+    libxml_clear_errors();
 
-      $maxage = 300;
-      $response->setPublic();
-      $response->setMaxAge($maxage);
-      $response->setSharedMaxAge($maxage);
-      
-      return $response;
-    }
+    $xp = new DOMXPath($dom);
+
+    // create the new element
+    $newNode = $dom->createElement('div', '{% block content endblock %}');
+    $newNode->setAttribute('id', 'div_to_replace');
+
+    // fetch and replace the old element
+    $oldNode = $dom->getElementById('div_to_replace');
+    $oldNode->parentNode->replaceChild($newNode, $oldNode);
+
+    // print xml
+    $page = $dom->saveXml($dom->documentElement);
+
+    $page = str_ireplace('charset=iso-8859-1','charset=utf-8',$page);
+    $fichier = fopen(dirname(__FILE__) . '/../Resources/views/directmatin.html.twig','w+');
+    fputs($fichier, $page);
+    fclose($fichier);
+
+    $response = $this->render('SkreenHouseFactoryPartnersBundle:DirectMatin:main.html.twig', array(
+      'home' => $data,
+    ));
+
+    $maxage = 300;
+    $response->setPublic();
+    $response->setMaxAge($maxage);
+    $response->setSharedMaxAge($maxage);
+    
+    return $response;
+  }
+
 }

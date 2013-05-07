@@ -1,4 +1,4 @@
-{% extends 'SkreenHouseFactoryPartnersBundle::liberation.html.twig' %}
+{% extends 'SkreenHouseFactoryPartnersBundle::directmatin.html.twig' %}
 
 {% block title %}title{% endblock %}
 {% block description %}desc{% endblock %}
@@ -6,9 +6,9 @@
 
 {% block content %}
 {% stylesheets
-    '@SkreenHouseFactoryPartnersBundle/Resources/public/less/liberation.less'
+    '@SkreenHouseFactoryPartnersBundle/Resources/public/less/directmatin.less'
       filter='less,?yui_css'
-      output='css/liberation.css'
+      output='css/directmatin.css'
       %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
 {% endstylesheets %}
@@ -24,20 +24,19 @@
   {% for slider in home.sliders if slider.id is defined %}
     {% if loop.first %}
       <div class="main-slider">
-      <div class="main-slider-title">
-      <h1>Replay TV</h1>
-      </div>
       <div class="carousel-container">{% include 'SkreenHouseFactoryV3Bundle:Main:_carousel.html.twig' with {slider: slider, skip_autoload: true, skip_like: true} %}</div>
       </div>
     {% else %}
+      {% set base_url = 'partners/directmatin/' %}
       {% if loop.index == 2 %}<div class="container">{% else %}<hr/>{% endif %}
-      <a name="{{ slider.name }}"></a>
-      {% include 'SkreenHouseFactoryV3Bundle:Main:_slider.html.twig' with {slider: slider} %}
+        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]}) }}">{% endif %}{{ slider.title|replace({'<small>': '<br/><small>'})|raw }}{% if slider.seo_url is defined %}</a>{% endif %}</h3>
+      {#% include 'SkreenHouseFactoryV3Bundle:Main:_slider.html.twig' with {slider: slider} %#}
     {% endif %}
   {% endfor %}
   </div>
   <br/>
-  <p align="right"><a href="http://www.myskreen.com/programme-tv">Replay</a> avec <a href="http://www.myskreen.com">mySkreen</a></p>
+  <br/>
+  <p align="right" class="footer-myskreen"><a href="http://www.myskreen.com/programme-tv">Replay TV</a> avec <a href="http://www.myskreen.com">mySkreen</a></p>
 </div>
 
 {% javascripts
@@ -52,42 +51,15 @@
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/_ui.js' 
 
     filter='?yui_js' 
-    output='js/compiled/liberation.js'  %}
+    output='js/compiled/directmatin.js'  %}
     <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 <script>
 API.init();
 UiView.init($('#view-home'));
 
-setTimeout(function(){
-  $('#myskreen-search').live('submit', function(e){
-    e.preventDefault();
-    document.location = $(this).attr('action') + encodeURIComponent($(this).find('input[name="q"]').attr('value'));
-    return false;
-  });
-}, 1000);
 </script>
 
-<script type="text/javascript">
-<!--
-xtnv = document;        //parent.document or top.document or document         
-xtsd = "http://logliberation";
-xtsite = "386916";
-xtn2 = "1";        // level 2 site ID
-xtpage = "MySkreen";        //page name (with the use of :: to create chapters)
-xtdi = "";        //implication degree
-xt_multc = "";		//all the xi indicators (like "&x1=...&x2=....&x3=...")
-xt_an = "";        //user ID
-xt_ac = "";        //category ID
-//do not modify below
-if (window.xtparam!=null){window.xtparam+="&ac="+xt_ac+"&an="+xt_an+xt_multc;}
-else{window.xtparam="&ac="+xt_ac+"&an="+xt_an+xt_multc;};
-//-->
-</script>
-<script type="text/javascript" src="http://s0.libe.com/cache/js/1883037ffeac.js"></script>
-<noscript>
-<img width="1" height="1" alt="" src="http://logliberation.xiti.com/hit.xiti?s=386916&s2=1&p=MySkreen&di=&an=&ac=" >
-</noscript>
 
 {% include 'SkreenHouseFactoryV3Bundle::_ga.html.twig' with {tag : 'UA-6151896-16'} %}
 {% endblock %}
