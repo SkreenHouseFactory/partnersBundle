@@ -31,22 +31,12 @@
 <div id="view-selection" class="container">
 
   <ul class="breadcrumb">
-    <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="{{ path('any_url', {url: 'partners/directmatin/'}) }}"><span itemprop="title">Voir tout le replay</span></a></li>
+    <li><a href="{{ path('any_url', {url: 'partners/directmatin/'}) }}"><span>Voir tout le replay</span></a></li>
   </ul>
   <br/>
   <br/>
   <h2>{{ selection.name|raw }}</h2>
   <p class="clear">{{ selection.description }}</p>
-
-  <div style="position:absolute;top:50;right:0;width: 300px;">
-  {#<a class="btn btn-large btn-inverse btn-block trigger-tv" href="#" data-couchmode="{{ {'type': 'pack', 'id': selection.id}|json_encode }}"><i class="icon-off icon-white"></i> {{ 'program.tv.on'|trans }}</a>#}
-  <br/>
-  <ul class="nav nav-tabs nav-stacked">
-    {% for pack in selection.onglet.sliders %}
-    <li><a href="{{ path('any_url', {url: pack.seo_url[1:pack.seo_url|length-1]}) }}">{{ pack.name|raw }}</a></li>
-    {% endfor %}
-  </ul>
-  </div>
 
   <div id="selection-programs" class="slider slider-list">
     <ul class="items">
@@ -55,6 +45,15 @@
     {% endfor %}
     </ul>
   </div>
+  <br/>
+  <br/>
+  <hr/>
+  <ul class="nav">
+    <li style="float:none;"><span>Replay à voir aussi</span></a></li>
+    {% for pack in selection.onglet.sliders %}
+    <li style="float:none;"><a href="{{ path('any_url', {url: pack.seo_url[1:pack.seo_url|length-1]}) }}">{{ pack.name|striptags }}</a></li>
+    {% endfor %}
+  </ul>
   <br/>
   <br/>
   <p align="right" class="footer-myskreen"><a href="http://www.myskreen.com/programme-tv">Replay TV</a> avec <a href="http://www.myskreen.com">mySkreen</a></p>
