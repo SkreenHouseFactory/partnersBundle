@@ -1,0 +1,83 @@
+{% extends 'SkreenHouseFactoryPartnersBundle::' ~ app.request.get('partner')|lower ~ '.html.twig' %}
+
+{% block meta %}
+{% if selection.programs|length < 6 %}
+<meta name="robots" content="noindex,follow" />
+{% endif %}
+<meta property="og:title" content="{{ selection.name }}" />
+<meta property="og:description" content="{{ selection.description }}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://www.myskreen.com{{ selection.seo_url }}" />
+{% if selection.picture %}
+<meta property="og:image" content="{{ selection.picture }}" />
+<link rel="image_src" href="{{ selection.picture }}" />
+{% endif %}
+<meta name="object_type" content="website" />
+{% endblock %}
+{% block title %}{{ selection.name|striptags }}{% endblock %}
+{% block description %}{{ selection.description|replace({"\n": ''})|striptags|slice(0, 165) }}{% endblock %}
+{% block body_class %}{% if selection.onglet.type == 'page' %}view-channel view-channel-selection cover{% endif %}{% endblock %}
+
+{% block content %}
+{% stylesheets
+    '@SkreenHouseFactoryPartnersBundle/Resources/public/less/directmatin.less'
+      filter='less,?yui_css'
+      output='css/directmatin.css'
+      %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+{% endstylesheets %}
+
+
+<div id="view-selection" class="container">
+
+  <ul class="breadcrumb">
+    <li><a href="{{ path('any_url', {url: 'partners/directmatin/'}) }}"><span>Voir tout le replay</span></a></li>
+  </ul>
+  <br/>
+  <br/>
+  <h2>{{ selection.name|raw }}</h2>
+  <p class="clear">{{ selection.description }}</p>
+
+  <div id="selection-programs" class="slider slider-list">
+    <ul class="items">
+    {% for program in selection.programs %}
+    {% include 'SkreenHouseFactoryV3Bundle:Main:_program.html.twig' with {p: program} %}
+    {% endfor %}
+    </ul>
+  </div>
+  <br/>
+  <br/>
+  <hr/>
+  <ul class="nav">
+    <li style="float:none;"><span>Replay à voir aussi</span></a></li>
+    {% for pack in selection.onglet.sliders %}
+    <li style="float:none;"><a href="{{ path('any_url', {url: pack.seo_url[1:pack.seo_url|length-1]}) }}">{{ pack.name|striptags }}</a></li>
+    {% endfor %}
+  </ul>
+  <br/>
+  <br/>
+  <p align="right" class="footer-myskreen"><a href="http://www.myskreen.com/programme-tv">Replay TV</a> avec <a href="http://www.myskreen.com">mySkreen</a></p>
+</div>
+
+
+{% javascripts
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery-1.8.3.min.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/bootstrap.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/modernizr.min.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/inheritance.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/_api_env.js' 
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/api.js'
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/slider.js' 
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/helpers.js' 
+    '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/_ui.js' 
+
+    filter='?yui_js' 
+    output='js/compiled/directmatin.js'  %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script>
+API.init();
+UiView.init($('#view-home'));
+
+</script>
+{% endblock %}

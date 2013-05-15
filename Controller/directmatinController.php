@@ -61,7 +61,8 @@ class DirectmatinController extends Controller
     // print xml
     $page = $dom->saveXml($dom->documentElement);
 
-    $page = str_ireplace('charset=iso-8859-1','charset=utf-8',$page);
+    $page = str_ireplace(array('charset=iso-8859-1', '<![CDATA[', ']]>'),array('charset=utf-8', ''),$page);
+
     $fichier = fopen(dirname(__FILE__) . '/../Resources/views/directmatin.html.twig','w+');
     fputs($fichier, $page);
     fclose($fichier);
