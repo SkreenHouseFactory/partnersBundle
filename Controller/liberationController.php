@@ -24,6 +24,9 @@ class LiberationController extends Controller
     */
     public function mainAction(Request $request)
     {
+      $layout = dirname(__FILE__) . '/../Resources/views/liberation.html.twig';
+      @unlink($layout);
+
       $api = new ApiManager($this->container->getParameter('kernel.environment'), '.json', 2);
       $data = $api->fetch('www/home/tv-replay', array(
         'without_footer' => true,
@@ -39,7 +42,7 @@ class LiberationController extends Controller
 
       $page = file_get_contents('http://www.liberation.fr/partenaires/100/');
       $page = str_ireplace(array('<head>','<!-- contenu partenaire ici -->'), array('<head><meta name="robots" content="noindex, nofollow">','{% block content endblock %}'), $page);
-      $fichier = fopen(dirname(__FILE__) . '/../Resources/views/liberation.html.twig','w+');
+      $fichier = fopen($layout,'w+');
       fputs($fichier, $page);
       fclose($fichier);
 

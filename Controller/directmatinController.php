@@ -27,6 +27,9 @@ class DirectmatinController extends Controller
   */
   public function mainAction(Request $request)
   {
+    $layout = dirname(__FILE__) . '/../Resources/views/directmatin.html.twig';
+    @unlink($layout);
+    
     $api = new ApiManager($this->container->getParameter('kernel.environment'), '.json', 2);
     $data = $api->fetch('www/home/tv-replay', array(
       'without_footer' => true,
@@ -63,7 +66,7 @@ class DirectmatinController extends Controller
 
     $page = str_ireplace(array('charset=iso-8859-1', '<![CDATA[', ']]>'),array('charset=utf-8', ''),$page);
 
-    $fichier = fopen(dirname(__FILE__) . '/../Resources/views/directmatin.html.twig','w+');
+    $fichier = fopen($layout,'w+');
     fputs($fichier, $page);
     fclose($fichier);
 
