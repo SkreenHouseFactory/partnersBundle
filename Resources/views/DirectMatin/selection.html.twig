@@ -27,7 +27,6 @@
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
 {% endstylesheets %}
 
-
 <div id="view-selection" class="container">
 
   <ul class="breadcrumb">
@@ -51,14 +50,13 @@
   <ul class="nav">
     <li style="float:none;"><span>Replay à voir aussi</span></a></li>
     {% for pack in selection.onglet.sliders %}
-    <li style="float:none;"><a href="{{ path('any_url', {url: pack.seo_url[1:pack.seo_url|length-1]}) }}">{{ pack.name|striptags }}</a></li>
+    <li style="float:none;"><a href="{{ path('any_url', {url: 'partners/directmatin' ~ pack.seo_url}) }}">{{ pack.name|striptags }}</a></li>
     {% endfor %}
   </ul>
   <br/>
   <br/>
   <p align="right" class="footer-myskreen"><a href="http://www.myskreen.com/programme-tv">Replay TV</a> avec <a href="http://www.myskreen.com">mySkreen</a></p>
 </div>
-
 
 {% javascripts
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery-1.8.3.min.js'
