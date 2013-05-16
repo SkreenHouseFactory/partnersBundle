@@ -40,7 +40,7 @@ class LiberationController extends Controller
      //echo $api->url;
      //print_r($datas);
 
-      $page = file_get_contents('http://www.liberation.fr/partenaires/100/');
+      $page = file_get_contents('http://www.liberation.fr/partenaires/100/?time='.time());
       $page = str_ireplace(array('<head>','<!-- contenu partenaire ici -->'), array('<head><meta name="robots" content="noindex, nofollow">','{% block content endblock %}'), $page);
       $fichier = fopen($layout,'w+');
       fputs($fichier, $page);

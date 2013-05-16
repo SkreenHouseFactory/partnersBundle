@@ -18,7 +18,6 @@ use Symfony\Component\HttpFoundation\Response;
 use SkreenHouseFactory\v3Bundle\Api\ApiManager;
 
 use \DOMDocument;
-use \DOMXPath;
 
 class DirectmatinController extends Controller
 {
