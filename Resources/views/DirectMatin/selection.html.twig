@@ -34,9 +34,27 @@
   </ul>
   <br/>
   <br/>
-  <h2>{{ selection.name|raw }}</h2>
-  <p class="clear">{{ selection.description }}</p>
-
+  
+  {% if selection.id == 4586427 %}
+    <h2>Ce soir à la télé</h2>
+    <p>Votre programme favori est diffusé ce soir et vous ne pourrez pas le voir. Repérez où et quand vous pourrez le revoir et soyez alerté par mail.</p>
+  {% elseif selection.id == 3772173 %}
+    <h2>Ce qu’il fallait voir hier soir</h2>
+    <p>Voici les programmes qui ont été plébiscités hier soir. Si vous les avez manqués, voici les meilleurs plans pour une session de rattrapage.</p>
+  {% elseif selection.id == 8239124 %}
+    <h2>Notre sélection 100% ciné</h2>
+    <p>VOD, DVD : retrouvez ici les films qui viennent de faire le buzz sur petit écran et ne ratez aucune des rediffusions.</p>
+  {% elseif selection.id == 7845071 %}
+    <h2>Le meilleur des magazines</h2>
+    <p>Tout le monde en parle ! Divertissements, spectacles, magazines. Retrouvez à volonté les stars d’aujourd’hui et de demain.</p>
+  {% elseif selection.id == 7845082 %}
+    <h2>Des séries à l'infini</h2>
+    <p>Fini les séries gâchées par un épisode ratées : faites votre programmation pour ne plus rien manquer des franchises événements.</p>
+  {% else %}
+    <h2>{{ selection.name|raw }}</h2>
+    <p>{{ selection.description }}</p>
+  {% endif %}
+  <br/>
   <div id="selection-programs" class="slider slider-list">
     <ul class="items">
     {% for program in selection.programs %}
@@ -77,5 +95,14 @@
 API.init();
 UiView.init($('#view-home'));
 
+$('#selection-programs.slider li:not(.selector)').on('click', function(e){
+  e.preventDefault();
+  e.stopPropagation();
+  
+  window.open($(this).find('a.title').attr('href'));
+  return false;
+})
+
 </script>
+
 {% endblock %}
