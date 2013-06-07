@@ -35,10 +35,10 @@
   <br/>
   <br/>
   
-  {% if selection.id == 4586427 %}
+  {% if selection.id in [4586427, 10913919] %}
     <h2>Ce soir à la télé</h2>
     <p>Votre programme favori est diffusé ce soir et vous ne pourrez pas le voir. Repérez où et quand vous pourrez le revoir et soyez alerté par mail.</p>
-  {% elseif selection.id == 3772173 %}
+  {% elseif selection.id in [3772173,3942417] %}
     <h2>Ce qu’il fallait voir hier soir</h2>
     <p>Voici les programmes qui ont été plébiscités hier soir. Si vous les avez manqués, voici les meilleurs plans pour une session de rattrapage.</p>
   {% elseif selection.id == 8239124 %}
@@ -49,7 +49,7 @@
     <p>Tout le monde en parle ! Divertissements, spectacles, magazines. Retrouvez à volonté les stars d’aujourd’hui et de demain.</p>
   {% elseif selection.id == 7845082 %}
     <h2>Des séries à l'infini</h2>
-    <p>Fini les séries gâchées par un épisode ratées : faites votre programmation pour ne plus rien manquer des franchises événements.</p>
+    <p>Fini les séries gâchées par un épisode raté : faites votre programmation pour ne plus rien manquer des franchises événements.</p>
   {% else %}
     <h2>{{ selection.name|raw }}</h2>
     <p>{{ selection.description }}</p>
