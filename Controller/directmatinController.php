@@ -62,6 +62,9 @@ class DirectmatinController extends Controller
                             '$1', 
                             $page);
 
+
+    $page = str_replace('"/', '"http://www.directmatin.fr/', $page);
+
     $page = str_ireplace(
       array(
         'charset=iso-8859-1', 
