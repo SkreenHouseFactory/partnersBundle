@@ -1,7 +1,8 @@
-{% extends 'SkreenHouseFactoryPartnersBundle::programmetvcom.html.twig' %}
+{% extends 'SkreenHouseFactoryPartnersBundle::liberation.html.twig' %}
 
 {% block title %}title{% endblock %}
 {% block description %}desc{% endblock %}
+
 
 {% block content %}
 {% stylesheets
@@ -13,6 +14,11 @@
 {% endstylesheets %}
 
 <div id="view-home">
+  <p style="font-size: 1.2em;text-align: center;">
+    <a href="{{ path('p_programmetvcom') }}">Replay</a>
+    <a href="{{ path('p_programmetvcom_home', {home: 'vod'}) }}">Vidéo à la demande</a>
+    <a href="{{ path('p_programmetvcom_home', {home: 'cinema'}) }}">Cinéma</a>
+  </p>
   {#
   <div class="pull-right">
     <form class="search" id="myskreen-search" action="http://www.myskreen.com/programmes/" method="get" accept-charset="utf-8">
@@ -24,7 +30,7 @@
     {% if loop.first %}
       <div class="main-slider">
       <div class="main-slider-title">
-      <h1>Replay TV</h1>
+      <h1>{{ title }}</h1>
       </div>
       <div class="carousel-container">{% include 'SkreenHouseFactoryV3Bundle:Main:_carousel.html.twig' with {slider: slider, skip_autoload: true, skip_like: true} %}</div>
       </div>
@@ -36,7 +42,7 @@
   {% endfor %}
   </div>
   <br/>
-  <p align="right"><a href="http://www.myskreen.com/">Replay</a> avec mySkreen</p>
+  <p align="right"><a href="http://www.myskreen.com">Replay TV</a> avec mySkreen</p>
 </div>
 
 {% javascripts
@@ -51,12 +57,20 @@
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/_ui.js' 
 
     filter='?yui_js' 
-    output='js/compiled/liberation.js'  %}
+    output='js/compiled/programmetvcom.js'  %}
     <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 <script>
 API.init();
 UiView.init($('#view-home'));
+
+setTimeout(function(){
+  $('#myskreen-search').live('submit', function(e){
+    e.preventDefault();
+    document.location = $(this).attr('action') + encodeURIComponent($(this).find('input[name="q"]').attr('value'));
+    return false;
+  });
+}, 1000);
 </script>
 
 {% include 'SkreenHouseFactoryV3Bundle::_ga.html.twig' with {tag : 'UA-6151896-16'} %}

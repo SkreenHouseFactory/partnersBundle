@@ -17,9 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 use SkreenHouseFactory\v3Bundle\Api\ApiManager;
 
-use \DOMDocument;
-
-class ProgrammetvcomController extends Controller
+class LiberationController extends Controller
 {
     /**
     * homes
@@ -29,14 +27,9 @@ class ProgrammetvcomController extends Controller
       $layout = dirname(__FILE__) . '/../Resources/views/liberation.html.twig';
       @unlink($layout);
       //exec('rm -rf '.$this->get('kernel')->getRootDir().'app/cache/prod/twig/');
-      $titles = array(
-        'tv-replay' => 'Replay TV',
-        'vod' => 'Vidéo à la demande',
-        'cinema' => 'Cinéma',
-      );
-      $home = str_replace('cinema', 'cine', $request->get('home', 'tv-replay'));
+
       $api = new ApiManager($this->container->getParameter('kernel.environment'), '.json', 2);
-      $data = $api->fetch('www/home/' . $home, array(
+      $data = $api->fetch('www/home/tv-replay', array(
         'without_footer' => true,
         'with_programs' => true,
         'img_width' => 160,
@@ -48,42 +41,21 @@ class ProgrammetvcomController extends Controller
      //echo $api->url;
      //print_r($datas);
 
-      $dom = new DOMDocument;
-      libxml_use_internal_errors(TRUE);
-      $dom->loadHTMLFile('http://www.programme-tv.com/myskreen.html?time='.time());
-      libxml_clear_errors();
-
-      // create the new element
-      $newNode = $dom->createElement('div', '{% block content endblock %}');
-      $newNode->setAttribute('id', 'myskreen_content');
-
-      // fetch and replace the old element
-      $oldNode = $dom->getElementById('myskreen_content');
-      $oldNode->parentNode->replaceChild($newNode, $oldNode);
-
-      // print xml
-      $page = $dom->saveXml($dom->documentElement);
-      $page = preg_replace(
-        '/^\s*\/\/<!\[CDATA\[([\s\S]*)\/\/\]\]>\s*\z/', 
-        '$1', 
-        $page
-      );
-      $page = str_replace(array('<![CDATA[', ']]>'), '', $page);
-
+      $page = file_get_contents('http://www.liberation.fr/partenaires/100/?time='.time());
+      $page = str_ireplace(array('<head>','<!-- contenu partenaire ici -->'), array('<head><meta name="robots" content="noindex, nofollow">','{% block content endblock %}'), $page);
       $fichier = fopen($layout,'w+');
       fputs($fichier, $page);
       fclose($fichier);
 
-      $response = $this->render('SkreenHouseFactoryPartnersBundle:ProgrammeTvCom:main.html.twig', array(
+      $response = $this->render('SkreenHouseFactoryPartnersBundle:Liberation:main.html.twig', array(
         'home' => $data,
-        'title' => $titles[$request->get('home', 'tv-replay')]
       ));
 
-      $maxage = 300;
+      $maxage = 3600;
       $response->setPublic();
       $response->setMaxAge($maxage);
       $response->setSharedMaxAge($maxage);
-    
+      
       return $response;
     }
 }

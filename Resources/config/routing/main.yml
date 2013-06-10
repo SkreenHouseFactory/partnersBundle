@@ -6,6 +6,9 @@ p_liberation:
 p_programmetvcom:
     pattern:  /programmetvcom/
     defaults: { _controller: SkreenHouseFactoryPartnersBundle:programmetvcom:main }
+p_programmetvcom_home:
+    pattern:  /programmetvcom/{home}
+    defaults: { _controller: SkreenHouseFactoryPartnersBundle:programmetvcom:main }
 #directmatin
 p_directmatin:
     pattern:  /directmatin/
