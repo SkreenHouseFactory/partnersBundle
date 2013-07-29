@@ -29,7 +29,7 @@ class DirectmatinController extends Controller
     $layout = dirname(__FILE__) . '/../Resources/views/directmatin.html.twig';
     @unlink($layout);
 
-    $api = new ApiManager($this->container->getParameter('kernel.environment'), '.json', 2);
+    $api = new ApiManager('.json', 2);
     $data = $api->fetch('www/home/tv-replay', array(
       'without_footer' => true,
       'with_programs' => true,
