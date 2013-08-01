@@ -35,7 +35,7 @@ class ProgrammetvcomController extends Controller
         'cinema' => 'Cinéma',
       );
       $home = str_replace('cinema', 'cine', $request->get('home', 'tv-replay'));
-      $api = new ApiManager($this->container->getParameter('kernel.environment'), '.json', 2);
+      $api = new ApiManager('.json', 2);
       $data = $api->fetch('www/home/' . $home, array(
         'without_footer' => true,
         'with_programs' => true,

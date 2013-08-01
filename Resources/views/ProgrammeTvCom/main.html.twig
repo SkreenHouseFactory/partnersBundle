@@ -3,7 +3,6 @@
 {% block title %}title{% endblock %}
 {% block description %}desc{% endblock %}
 
-
 {% block content %}
 {% stylesheets
     '@SkreenHouseFactoryPartnersBundle/Resources/public/less/programmetvcom.less'
@@ -17,7 +16,7 @@
   <p class="sk-menu">
     <a href="{{ path('p_programmetvcom') }}">Replay</a>
     <a href="{{ path('p_programmetvcom_home', {home: 'vod'}) }}">Vidéo à la demande</a>
-    <a href="{{ path('p_programmetvcom_home', {home: 'cinema'}) }}">Cinéma</a>
+    {#<a href="{{ path('p_programmetvcom_home', {home: 'cinema'}) }}">Cinéma</a>#}
   </p>
   {#
   <div class="pull-right">
@@ -50,7 +49,6 @@
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/bootstrap.js'
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/modernizr.min.js'
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/inheritance.js'
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/_api_env.js' 
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/api.js'
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/slider.js' 
     '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/helpers.js' 
