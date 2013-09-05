@@ -26,7 +26,7 @@ class ProgrammetvcomController extends Controller
     */
     public function mainAction(Request $request)
     {
-      $layout = dirname(__FILE__) . '/../Resources/views/liberation.html.twig';
+      $layout = dirname(__FILE__) . '/../Resources/views/programmetvcom.html.twig';
       @unlink($layout);
       //exec('rm -rf '.$this->get('kernel')->getRootDir().'app/cache/prod/twig/');
       $titles = array(
@@ -35,7 +35,7 @@ class ProgrammetvcomController extends Controller
         'cinema' => 'Cinéma',
       );
       $home = str_replace('cinema', 'cine', $request->get('home', 'tv-replay'));
-      $api = new ApiManager('.json', 2);
+      $api = $this->get('api');
       $data = $api->fetch('www/home/' . $home, array(
         'without_footer' => true,
         'with_programs' => true,
@@ -49,7 +49,7 @@ class ProgrammetvcomController extends Controller
      //print_r($datas);
 
       $dom = new DOMDocument;
-      libxml_use_internal_errors(TRUE);
+      libxml_use_internal_errors(true);
       $dom->loadHTMLFile('http://www.programme-tv.com/myskreen.html?time='.time());
       libxml_clear_errors();
 

@@ -28,7 +28,7 @@ class LiberationController extends Controller
       @unlink($layout);
       //exec('rm -rf '.$this->get('kernel')->getRootDir().'app/cache/prod/twig/');
 
-      $api = new ApiManager($this->container->getParameter('kernel.environment'), '.json', 2);
+      $api = $this->get('api');
       $data = $api->fetch('www/home/tv-replay', array(
         'without_footer' => true,
         'with_programs' => true,

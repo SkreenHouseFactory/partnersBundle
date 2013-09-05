@@ -1,4 +1,4 @@
-{% extends 'SkreenHouseFactoryPartnersBundle::liberation.html.twig' %}
+{% extends 'SkreenHouseFactoryPartnersBundle::programmetvcom.html.twig' %}
 
 {% block title %}title{% endblock %}
 {% block description %}desc{% endblock %}
@@ -6,7 +6,7 @@
 {% block content %}
 {% stylesheets
     '@SkreenHouseFactoryPartnersBundle/Resources/public/less/programmetvcom.less'
-      filter='less,?yui_css'
+      filter='lessphp,?yui_css'
       output='css/programmetvcom.css'
       %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
@@ -25,7 +25,7 @@
     </form>
   </div>
   #}
-  {% for slider in home.sliders if slider.id is defined %}
+  {% for slider in home.sliders|to_array if slider.id is defined %}
     {% if loop.first %}
       <div class="main-slider">
       <div class="main-slider-title">
@@ -45,17 +45,20 @@
 </div>
 
 {% javascripts
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery-1.8.3.min.js'
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/bootstrap.js'
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/modernizr.min.js'
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/inheritance.js'
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/api.js'
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/slider.js' 
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/helpers.js' 
-    '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/_ui.js' 
+  '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery-1.10.2.min.js'
+  '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery.cookies.min.js'
+  '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/bootstrap.min.js'
+  '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/modernizr.min.js'
+  '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/inheritance.js'
+  '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/respond.min.js'
+  '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/api.js'
+  '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/slider.js' 
+  '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/_default.js'
+  '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/helpers.js' 
+  '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/_ui.js' 
 
     filter='?yui_js' 
-    output='js/compiled/programmetvcom.js'  %}
+    output='js/compiled/partners.js'  %}
     <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 <script>
