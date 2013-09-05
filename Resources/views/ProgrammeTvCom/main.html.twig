@@ -13,11 +13,13 @@
 {% endstylesheets %}
 
 <div id="view-home">
+ {#
   <p class="sk-menu">
     <a href="{{ path('p_programmetvcom') }}">Replay</a>
     <a href="{{ path('p_programmetvcom_home', {home: 'vod'}) }}">Vidéo à la demande</a>
-    {#<a href="{{ path('p_programmetvcom_home', {home: 'cinema'}) }}">Cinéma</a>#}
+    <a href="{{ path('p_programmetvcom_home', {home: 'cinema'}) }}">Cinéma</a>
   </p>
+  #}
   {#
   <div class="pull-right">
     <form class="search" id="myskreen-search" action="http://www.myskreen.com/programmes/" method="get" accept-charset="utf-8">
@@ -25,7 +27,7 @@
     </form>
   </div>
   #}
-  {% for slider in home.sliders|to_array if slider.id is defined %}
+  {% for slider in home.sliders|to_array if slider.id is defined and slider.id not in [4586427] %}
     {% if loop.first %}
       <div class="main-slider">
       <div class="main-slider-title">
