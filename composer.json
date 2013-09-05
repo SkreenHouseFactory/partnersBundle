@@ -30,9 +30,9 @@
 
     "autoload": {
         "psr-0": {
-            "SkreenHouseFactory\\partnersBundle": "."
+            "SkreenHouseFactory\\partnersBundle": ""
         }
     },
 
-    "target-dir": ""
+    "target-dir": "SkreenHouseFactory/partnersBundle"
 }
