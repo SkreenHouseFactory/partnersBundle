@@ -57,7 +57,7 @@
   <br/>
   <div id="selection-programs" class="slider slider-list">
     <ul class="items">
-    {% for program in selection.programs %}
+    {% for program in selection.programs|to_array %}
     {% include 'SkreenHouseFactoryV3Bundle:Main:_program.html.twig' with {p: program} %}
     {% endfor %}
     </ul>
@@ -67,7 +67,7 @@
   <hr/>
   <ul class="nav">
     <li style="float:none;"><span>Replay à voir aussi</span></a></li>
-    {% for pack in selection.onglet.sliders %}
+    {% for pack in selection.onglet.sliders|to_array %}
     <li style="float:none;"><a href="{{ path('any_url', {url: 'partners/directmatin' ~ pack.seo_url}) }}">{{ pack.name|striptags }}</a></li>
     {% endfor %}
   </ul>

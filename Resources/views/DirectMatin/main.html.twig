@@ -21,7 +21,7 @@
     </form>
   </div>
   #}
-  {% for slider in home.sliders if slider.id is defined %}
+  {% for slider in home.sliders|to_array if slider.id is defined %}
     {% if loop.first %}
       {#<div class="main-slider">
       <div class="carousel-container">{% include 'SkreenHouseFactoryV3Bundle:Main:_carousel.html.twig' with {slider: slider, skip_autoload: true, skip_like: true} %}</div>
@@ -30,8 +30,9 @@
       {% set base_url = 'partners/directmatin/' %}
       {% if loop.index == 2 %}<div class="container">{% else %}<hr/>{% endif %}
         <div class="pack" id="pack-{{ slider.id }}">
-        {% if slider.programs[0].picture is defined %}
-        <img class="tease" src="{{ slider.programs[0].picture }}" alt="{{ slider.programs[0].title }}" />
+        {% set programs = slider.programs|to_array %}
+        {% if programs|first.picture is defined %}
+        <img class="tease" src="{{ programs|first.picture }}" alt="{{ programs|first.title }}" />
         {% endif %}
         {% if slider.id in [4586427, 10913919] %}
         <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]}) }}">{% endif %}Ce soir à la télé<small>Votre programme favori est diffusé ce soir et vous ne pourrez pas le voir. Repérez où et quand vous pourrez le revoir et soyez alerté par mail</small></a></h3>
