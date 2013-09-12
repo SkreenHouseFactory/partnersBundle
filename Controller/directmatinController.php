@@ -42,6 +42,11 @@ class DirectmatinController extends Controller
    //echo $api->url;
    //print_r($datas);
 
+
+
+    $page = file_get_contents('http://www.directmatin.fr/myskreen');
+    //echo $page; exit;
+/*
     $dom = new DOMDocument;
     libxml_use_internal_errors(TRUE);
     $dom->loadHTMLFile('http://www.directmatin.fr/myskreen');
@@ -50,6 +55,7 @@ class DirectmatinController extends Controller
     // create the new element
     $newNode = $dom->createElement('div', '{% block content endblock %}');
     $newNode->setAttribute('id', 'div_to_replace');
+
 
     // fetch and replace the old element
     $oldNode = $dom->getElementById('div_to_replace');
@@ -61,9 +67,10 @@ class DirectmatinController extends Controller
     $page = preg_replace('/^\s*\/\/<!\[CDATA\[([\s\S]*)\/\/\]\]>\s*\z/', 
                             '$1', 
                             $page);
-
+*/
 
     $page = str_replace('"/', '"http://www.directmatin.fr/', $page);
+    $page = str_replace('<div id="div_to_replace">&nbsp;</div>', '{% block content endblock %}', $page);
 
     $page = str_ireplace(
       array(
