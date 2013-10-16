@@ -69,6 +69,8 @@ class ProgrammetvcomController extends Controller
         $page
       );
       $page = str_replace(array('<![CDATA[', ']]>'), '', $page);
+      $page = str_replace('="/', '="http://www.programme-tv.com/', $page);
+      $page = str_replace('="#/', '="#http://www.programme-tv.com/', $page);
 
       $fichier = fopen($layout,'w+');
       fputs($fichier, $page);
