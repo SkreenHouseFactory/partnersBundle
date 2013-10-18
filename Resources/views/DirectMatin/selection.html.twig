@@ -13,6 +13,7 @@
 <link rel="image_src" href="{{ selection.picture }}" />
 {% endif %}
 <meta name="object_type" content="website" />
+
 {% endblock %}
 {% block title %}{{ selection.name|striptags }}{% endblock %}
 {% block description %}{{ selection.description|replace({"\n": ''})|striptags|slice(0, 165) }}{% endblock %}
@@ -20,6 +21,7 @@
 
 {% block content %}
 {% stylesheets
+    '@SkreenHouseFactoryPartnersBundle/Resources/bootstrap/less/glyphicons.less'
     '@SkreenHouseFactoryPartnersBundle/Resources/public/less/directmatin.less'
       filter='less,?yui_css'
       output='css/directmatin.css'
