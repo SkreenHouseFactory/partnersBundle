@@ -26,8 +26,8 @@ class ProgrammetvcomController extends Controller
     */
     public function mainAction(Request $request)
     {
-      $layout = dirname(__FILE__) . '/../Resources/views/programmetvcom.html.twig';
-      @unlink($layout);
+      /*$layout = dirname(__FILE__) . '/../Resources/views/programmetv.html.twig';
+      @unlink($layout); */
       //exec('rm -rf '.$this->get('kernel')->getRootDir().'app/cache/prod/twig/');
       $titles = array(
         'tv-replay' => 'Replay TV',
@@ -45,9 +45,9 @@ class ProgrammetvcomController extends Controller
         'with_pass' => true,
         'slider_width' => 990
       ));
-     //echo $api->url;
+     //echo $api->url;s
      //print_r($datas);
-
+     /*
       $dom = new DOMDocument;
       libxml_use_internal_errors(true);
       $dom->loadHTMLFile('http://www.programme-tv.com/myskreen.html?time='.time());
@@ -74,7 +74,7 @@ class ProgrammetvcomController extends Controller
 
       $fichier = fopen($layout,'w+');
       fputs($fichier, $page);
-      fclose($fichier);
+      fclose($fichier);*/
 
       $response = $this->render('SkreenHouseFactoryPartnersBundle:ProgrammeTvCom:main.html.twig', array(
         'home' => $data,
