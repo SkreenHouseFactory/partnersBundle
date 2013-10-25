@@ -1,0 +1,53 @@
+{% if app.request.isXmlHttpRequest %}
+{% else %}
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="fr"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="fr"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="fr"> <![endif]-->
+<head><title>Replay Myskreen</title><meta http-equiv="X-UA-Compatible" content="IE=8"/><meta name="description" content="Le programme TV de toutes les chaines, gratuit sur 15 jours. TNT, satellite, cable et adsl &gt;&gt;&gt; Programme-TV.com"/><meta name="keywords" content="programme, tv, tele, television, tf1, M6, TNT, soir, gratuit, chaines, regarder, satellite,  numerique, cable, freebox"/><meta name="classification" content="Programme TV"/><meta name="robots" content="index,follow"/><meta name="language" content="FR"/><meta http-equiv="Content-Language" content="FR"/><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/><meta name="Author" content="hi-pi.com"/><meta property="fb:app_id" content="290517357672731"/><meta name="Copyright" content=" &amp;COPY;programme-tv.com"/><link href="http://static3.programme-tv.com/templates/default/css/pack_base.css?rev=77777777777777777777777777777777777777777777777777777777777777777777777777777" rel="stylesheet" type="text/css" media="all"/><link rel="shortcut icon" href="http://static3.programme-tv.com/favicon.ico"/><meta property="og:title" content="Replay Myskreen"/><meta property="og:type" content="website"/><meta property="og:image" content="http://http://static3.programme-tv.com//templates/default/css/images/fr/logo-home.jpg"/><link rel="image_src" href="http://http://static3.programme-tv.com//templates/default/css/images/fr/logo-home.jpg"/><meta property="og:description" content="Le programme TV de toutes les chaines, gratuit sur 15 jours. TNT, satellite, cable et adsl &gt;&gt;&gt; Programme-TV.com"/><meta property="og:site_name" content="www.programme-tv.com"/><meta property="og:url" content="http://www.programme-tv.com/myskreen.html?time=1382534222"/><script type="text/javascript">
+  var ma_select_tv = 'entrez un mot clef';
+  </script><script type="text/javascript" src="http://static3.programme-tv.com/js/pack_base.js?rev=2"/><script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script><link rel="alternate" type="application/rss+xml" href="http://www.programme-tv.com/rss.xml" title="programme-tv.com : tout votre programme TV simplement"/><meta name="verify-v1" content="1KubZM4mbi/bZ46vvu6Kd2RncEYHBK3gI6tDiswCoyU="http://www.programme-tv.com/><meta name="google-site-verification" content="WkDyNaGT4IT3G8vBvq99fW4sWwmPyLsr3sw0BKnFXh0"/><style type="text/css">
+    
+      #column {
+        float: right;
+      }
+      #content {
+        float: left;
+      }
+    
+  </style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{% block title endblock %} | {{ 'service.name'|trans }}</title>
+  <meta name="description" content="{% block description %}{% endblock %}">
+  <meta name="author" content="mySkreen">
+  <meta name="language" content="fr-FR" />
+  <meta name="viewport" content="width=device-width">
+  <meta name="robots" content="noindex,nofollow">
+  {% stylesheets
+      '@SkreenHouseFactoryV3Bundle/Resources/public/less/_default.less'
+        filter='less,?yui_css'
+        output='css/empty.css'
+        %}
+      <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+  {% endstylesheets %}
+  
+</head>
+<body>
+{% endif %}
+
+<div class="body_background" data-refresh-bodybackground="{% block body_background %} {% endblock %}" data-refresh-bodyclass="{% block body_class %} {% endblock %}"></div>
+{% block content %}
+{% endblock %}
+{% if app.request.isXmlHttpRequest %}
+  <script>
+  UiView.update($('.uiview-update'));
+  </script>
+  
+  {% block pagescripts %}
+  a
+  {% endblock %}
+{% else %}
+  </body>
+</html>
+{% endif %}
