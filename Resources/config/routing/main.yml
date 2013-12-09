@@ -1,3 +1,7 @@
+#leparisien
+p_leparisien:
+    pattern:  /leparisien/
+    defaults: { _controller: SkreenHouseFactoryPartnersBundle:leparisien:main }
 #liberation
 p_liberation:
     pattern:  /liberation/
