@@ -30,7 +30,8 @@ class LeparisienController extends Controller
     $response = $this->forward('SkreenHouseFactoryV3Bundle:Channel:channel', array(
            'slug'    => 'media-center-inconnus',
            'preview' => true,
-           'sklayout'  => 'SkreenHouseFactoryPartnersBundle::leparisien'
+           'sklayout'  => 'SkreenHouseFactoryPartnersBundle::leparisien',
+           'partner'=> true
        ));
 
     $maxage = 300;
