@@ -19,20 +19,25 @@ use SkreenHouseFactory\v3Bundle\Api\ApiManager;
 
 use \DOMDocument;
 
-class LeparisienController extends Controller
+class RireetchansonsController extends Controller
 {
   /**
   * homes
   */
   public function mainAction(Request $request)
   {
+    //$request->request->set('slug','media-center-inconnus');
     $response = $this->forward('SkreenHouseFactoryV3Bundle:Channel:channel', array(
            'slug'    => 'l-integrale-des-inconnus',
-           //'id' => 65,
            'preview' => true,
-           'sklayout'  => 'SkreenHouseFactoryPartnersBundle::leparisien',
-           'partner'=> true
+           'sklayout'  => 'SkreenHouseFactoryPartnersBundle::rireetchansons',
+           'partner'=> true,
+          'css' =>  utf8_decode(@file_get_contents("http://www.rireetchansons.fr/index/css/?partenaire=rire_les_inconnus&type=sans", False)),
+          'header'=> utf8_decode(@file_get_contents("http://www.rireetchansons.fr/index/header/?partenaire=rire_les_inconnus&type=sans", False)),
+          'footer'=>utf8_decode(@file_get_contents("http://www.rireetchansons.fr/index/footer/?partenaire=rire_les_inconnus", False))
        ));
+    
+
 
     $maxage = 300;
     $response->setPublic();
