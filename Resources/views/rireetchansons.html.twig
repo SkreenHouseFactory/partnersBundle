@@ -1,17 +1,48 @@
 <!DOCTYPE html PUBLIC "- W3C DTD XHTML 1.0 Transitional EN" "http: www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="fr" xmlns="http: www.w3.org/1999/xhtml">
 <head>
-  {{css}}
+  {{css|raw}}
+  {% stylesheets
+    '@SkreenHouseFactoryPartnersBundle/Resources/public/less/rireetchansons.less'
+    filter='lessphp,?yui_css'
+    output='css/partners-rireetchanson.css'
+    %}
+    <link href="{{ asset_url }}?{{ 'now'|date('dm') }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+  {% javascripts
+        '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/jquery-1.10.2.min.js'
+        '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/bootstrap.js'
+        '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/modernizr.min.js'
+        '@SkreenHouseFactoryV3Bundle/Resources/public/js/vendors/inheritance.js'
+        '@SkreenHouseFactoryV3Bundle/Resources/public/js/core/api.js'
+        '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/helpers.js' 
+        '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/core/_ui.js' 
 
+        filter='?yui_js' 
+        output='js/compiled/partners-core.js'  %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+  {% javascripts
+        '@SkreenHouseFactoryV3Bundle/Resources/public/js/scripts/channel.js'
+        filter='?yui_js' 
+        output='js/compiled/pages/channel.js'  %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 </head>
 
 <body>
-  {{header}}
+  
+  {{header|raw}}
 <br/>
-Le contenu<br/>
+<div id="myskreen">
+{% block content%}
+{% endblock %}
+</div>
+
+<br/>
 <br/>
 <div id="container">
-  {{footer}}
+  {{footer|raw}}
 
 </div>
 </body>
