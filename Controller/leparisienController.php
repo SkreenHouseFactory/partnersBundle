@@ -26,9 +26,9 @@ class LeparisienController extends Controller
   */
   public function mainAction(Request $request)
   {
-    //$request->request->set('slug','media-center-inconnus');
     $response = $this->forward('SkreenHouseFactoryV3Bundle:Channel:channel', array(
-           'slug'    => 'media-center-inconnus',
+           'slug'    => 'l-integrale-des-inconnus',
+           //'id' => 65,
            'preview' => true,
            'sklayout'  => 'SkreenHouseFactoryPartnersBundle::leparisien'
        ));

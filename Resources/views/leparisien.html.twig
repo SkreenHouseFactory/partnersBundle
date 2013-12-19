@@ -80,6 +80,12 @@ document.write(footer_lp);
 
 
 
+
+{% if app.environment == 'prod' %}
+{% include 'SkreenHouseFactoryV3Bundle::_ga.html.twig' with {tag: 'UA-6151896-17'} %}
+{% include 'SkreenHouseFactoryV3Bundle::_chartbeat.html.twig' %}
+
+
 <script type="text/javascript">
 //<!--
 xtnv = document; //parent.document or top.document or document 
@@ -96,6 +102,8 @@ xtdi = ""; //implication degree
 </noscript>
 
 <!-- /Marqueur XITI -->
+
+{% endif %}
 
 </body>
 </html>
