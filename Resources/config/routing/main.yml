@@ -1,3 +1,7 @@
+#rireetchanson
+p_rireetchansons:
+    pattern:  /rireetchansons/
+    defaults: { _controller: SkreenHouseFactoryPartnersBundle:rireetchansons:main }
 #leparisien
 p_leparisien:
     pattern:  /leparisien/
