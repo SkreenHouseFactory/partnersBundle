@@ -32,9 +32,9 @@ class RireetchansonsController extends Controller
            'preview' => true,
            'sklayout'  => 'SkreenHouseFactoryPartnersBundle::rireetchansons',
            'partner'=> true,
-          'css' =>  utf8_decode(@file_get_contents("http://www.rireetchansons.fr/index/css/?partenaire=rire_les_inconnus&type=sans", False)),
-          'header'=> utf8_decode(@file_get_contents("http://www.rireetchansons.fr/index/header/?partenaire=rire_les_inconnus&type=sans", False)),
-          'footer'=>utf8_decode(@file_get_contents("http://www.rireetchansons.fr/index/footer/?partenaire=rire_les_inconnus", False))
+          'css' =>  (@file_get_contents("http://www.rireetchansons.fr/index/css/?partenaire=rire_les_inconnus&type=sans", False)),
+          'header'=> (@file_get_contents("http://www.rireetchansons.fr/index/header/?partenaire=rire_les_inconnus&type=sans", False)),
+          'footer'=>(@file_get_contents("http://www.rireetchansons.fr/index/footer/?partenaire=rire_les_inconnus", False))
        ));
     
 
