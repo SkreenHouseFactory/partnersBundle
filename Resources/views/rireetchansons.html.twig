@@ -45,7 +45,11 @@
 <br/>
 <div id="container">
   {{footer|raw}}
-
 </div>
+
+{% if app.environment == 'prod' %}
+{% include 'SkreenHouseFactoryV3Bundle::_ga.html.twig' with {tag: 'UA-6151896-17'} %}
+{% include 'SkreenHouseFactoryV3Bundle::_chartbeat.html.twig' %}
+{% endif %}
 </body>
 </html>
