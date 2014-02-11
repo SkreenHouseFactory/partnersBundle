@@ -32,7 +32,7 @@
       <div class="carousel-container">{% include 'SkreenHouseFactoryV3Bundle:Main:_carousel.html.twig' with {slider: slider, skip_autoload: true, skip_like: true} %}</div>
       </div>#}
     {% else %}
-      {% set base_url = 'partners/directmatin/' %}
+      {% set base_url = '/partners/directmatin/' %}
       {% if loop.index == 2 %}<div class="container">{% else %}<hr/>{% endif %}
         <div class="pack" id="pack-{{ slider.id }}">
         {% set programs = slider.programs|to_array %}
