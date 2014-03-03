@@ -33,14 +33,14 @@ p_programmetvcom:
         _controller: SkreenHouseFactoryPartnersBundle:programmetvcom:main
         domain: programme-tv.com
     requirements:
-        domain: programme-tv.com|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net
+        domain: replay.programme-tv.com|programme-tv.com|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net
 p_programmetvcom_home:
-    pattern:  /programmetvcom/{home}
+    pattern:  /programmetvcom/{home}/
     defaults:
         _controller: SkreenHouseFactoryPartnersBundle:programmetvcom:main
         domain: programme-tv.com
     requirements:
-        domain: programme-tv.com|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net
+        domain: replay.programme-tv.com|programme-tv.com|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net
 #directmatin
 p_directmatin:
     pattern:  /directmatin/
