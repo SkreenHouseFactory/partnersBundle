@@ -69,6 +69,10 @@ class DirectmatinController extends Controller
                             $page);
 */
 
+
+    
+    
+    $page = str_replace('<meta name="google-site-verification" content="DefSMCiqKNtO6Jx13avt2UaobRcBYUJ9IRcBKGdXsvQ" />', '<meta name="google-site-verification" content="OKKkZzYovNKSvMzEtRABdysbkrhEXJC8ZvE_C7eEMkk" /><meta name="google-site-verification" content="DefSMCiqKNtO6Jx13avt2UaobRcBYUJ9IRcBKGdXsvQ" />', $page);
     $page = str_replace('"/', '"http://www.directmatin.fr/', $page);
     $page = str_replace('<div id="div_to_replace">&nbsp;</div>', '{% block content endblock %}', $page);
 
