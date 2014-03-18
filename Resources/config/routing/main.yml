@@ -6,7 +6,7 @@ p_rireetchansons:
         _controller: SkreenHouseFactoryPartnersBundle:rireetchansons:main
         domain: myskreen.rireetchansons.fr
     requirements:
-        domain: myskreen.rireetchansons.fr|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net
+        domain: myskreen.rireetchansons.fr|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net|v3.dev5.myskreen.typhon.net
 #leparisien
 p_leparisien:
     pattern:  /leparisien/
@@ -15,7 +15,7 @@ p_leparisien:
         _controller: SkreenHouseFactoryPartnersBundle:leparisien:main
         domain: leparisien.fr
     requirements:
-        domain: leparisien.fr|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net
+        domain: leparisien.fr|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net|v3.dev5.myskreen.typhon.net
 #liberation
 p_liberation:
     pattern:  /liberation/
@@ -24,7 +24,7 @@ p_liberation:
         _controller: SkreenHouseFactoryPartnersBundle:liberation:main
         domain: liberation.fr
     requirements:
-        domain: liberation.fr|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net
+        domain: liberation.fr|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net|v3.dev5.myskreen.typhon.net
 #programmetvcom
 p_programmetvcom:
     pattern:  /programmetvcom/
@@ -33,14 +33,14 @@ p_programmetvcom:
         _controller: SkreenHouseFactoryPartnersBundle:programmetvcom:main
         domain: programme-tv.com
     requirements:
-        domain: replay.programme-tv.com|programme-tv.com|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net
+        domain: replay.programme-tv.com|programme-tv.com|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net|v3.dev5.myskreen.typhon.net
 p_programmetvcom_home:
     pattern:  /programmetvcom/{home}/
     defaults:
         _controller: SkreenHouseFactoryPartnersBundle:programmetvcom:main
         domain: programme-tv.com
     requirements:
-        domain: replay.programme-tv.com|programme-tv.com|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net
+        domain: replay.programme-tv.com|programme-tv.com|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net|v3.dev5.myskreen.typhon.net
 #directmatin
 p_directmatin:
     pattern:  /directmatin/
@@ -48,7 +48,7 @@ p_directmatin:
         _controller: SkreenHouseFactoryPartnersBundle:directmatin:main
         domain: replay.directmatin.fr
     requirements:
-        domain: replay.directmatin.fr|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net
+        domain: replay.directmatin.fr|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net|v3.dev5.myskreen.typhon.net
 #directmatin selection
 p_directmatin_selection:
     pattern:  /directmatin/{homeslug}/selection/{id}-{slug}/
@@ -57,7 +57,7 @@ p_directmatin_selection:
         partner: DirectMatin
         domain: replay.directmatin.fr
     requirements:
-        domain: replay.directmatin.fr|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net
+        domain: replay.directmatin.fr|preprod-v3.myskreen.com|v3.benoit.myskreen.typhon.net|v3.dev5.myskreen.typhon.net
         id: \d+
         slug: "[^/]+"
         homeslug: "[^/]+"
