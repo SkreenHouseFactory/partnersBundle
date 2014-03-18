@@ -26,12 +26,9 @@ class RireetchansonsController extends Controller
   */
   public function mainAction(Request $request)
   {
-    //$request->request->set('slug','media-center-inconnus');
-    $response = $this->forward('SkreenHouseFactoryV3Bundle:Channel:channel', array(
-           'slug'    => 'l-integrale-des-inconnus',
-           'preview' => true,
-           'sklayout'  => 'SkreenHouseFactoryPartnersBundle::rireetchansons',
-           'partner'=> true,
+    $request->attributes->set('slug','media-center-inconnus');
+    $request->attributes->set('partner',1);
+    $response = $this->render('SkreenHouseFactoryPartnersBundle:Rireetchansons:inconnus-integrale.html.twig', array(
           'css' =>  (@file_get_contents("http://www.rireetchansons.fr/index/css/?partenaire=rire_les_inconnus&type=sans", False)),
           'header'=> (@file_get_contents("http://www.rireetchansons.fr/index/header/?partenaire=rire_les_inconnus&type=sans", False)),
           'footer'=>(@file_get_contents("http://www.rireetchansons.fr/index/footer/?partenaire=rire_les_inconnus", False))
