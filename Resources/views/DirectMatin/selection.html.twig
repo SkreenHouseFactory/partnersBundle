@@ -35,7 +35,7 @@
 <div id="view-selection" class="container">
 
   <ul class="breadcrumb">
-    <li><a href="{{ path('any_url', {url: 'partners/directmatin/'}) }}"><span>Voir tout le replay</span></a></li>
+    <li><a href="{{ path('any_url', {url: 'partners/directmatin/'})|replace({'//www.myskreen.com/' : ''}) }}"><span>Voir tout le replay</span></a></li>
   </ul>
   <br/>
   <br/>
@@ -73,12 +73,12 @@
   <ul class="nav">
     <li style="float:none;"><span>Replay à voir aussi</span></a></li>
     {% for pack in selection.onglet.sliders|to_array %}
-    <li style="float:none;"><a href="{{ path('any_url', {url: 'partners/directmatin' ~ pack.seo_url}) }}">{{ pack.name|striptags }}</a></li>
+    <li style="float:none;"><a href="{{ path('any_url', {url: 'partners/directmatin' ~ pack.seo_url})|replace({'//www.myskreen.com/' : ''}) }}">{{ pack.name|striptags }}</a></li>
     {% endfor %}
   </ul>
   <br/>
   <br/>
-  <p align="right" class="footer-myskreen"><a href="http://www.myskreen.com/programme-tv">Replay TV</a> avec <a href="http://www.myskreen.com">mySkreen</a></p>
+  <p align="right" class="footer-myskreen"><a href="http://www.myskreen.com/programme-tv/">Replay TV</a> avec <a href="http://www.myskreen.com">mySkreen</a></p>
 </div>
 
 {#

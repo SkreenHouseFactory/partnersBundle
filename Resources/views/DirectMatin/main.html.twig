@@ -40,17 +40,17 @@
         <img class="tease" src="{{ programs|first.picture }}" alt="{{ programs|first.title }}" />
         {% endif %}
         {% if slider.id in [4586427, 10913919] %}
-        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]}) }}">{% endif %}Ce soir à la télé<small>Votre programme favori est diffusé ce soir et vous ne pourrez pas le voir. Repérez où et quand vous pourrez le revoir et soyez alerté par mail</small></a></h3>
+        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]})|replace({'//www.myskreen.com/' : ''}) }}">{% endif %}Ce soir à la télé<small>Votre programme favori est diffusé ce soir et vous ne pourrez pas le voir. Repérez où et quand vous pourrez le revoir et soyez alerté par mail</small></a></h3>
         {% elseif slider.id in [3772173,3942417] %}
-        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]}) }}">{% endif %}Ce qu’il fallait voir hier soir<small>Voici les programmes qui ont été plébiscités hier soir. Si vous les avez manqués, voici les meilleurs plans pour une session de rattrapage.</small></a></h3>
+        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]})|replace({'//www.myskreen.com/' : ''}) }}">{% endif %}Ce qu’il fallait voir hier soir<small>Voici les programmes qui ont été plébiscités hier soir. Si vous les avez manqués, voici les meilleurs plans pour une session de rattrapage.</small></a></h3>
         {% elseif slider.id == 8239124 %}
-        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]}) }}">{% endif %}Notre sélection 100% ciné<small>VOD, DVD : retrouvez ici les films qui viennent de faire le buzz sur petit écran et ne ratez aucune des rediffusions.</small></a></h3>
+        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]})|replace({'//www.myskreen.com/' : ''}) }}">{% endif %}Notre sélection 100% ciné<small>VOD, DVD : retrouvez ici les films qui viennent de faire le buzz sur petit écran et ne ratez aucune des rediffusions.</small></a></h3>
         {% elseif slider.id == 7845071 %}
-        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]}) }}">{% endif %}Le meilleur des magazines<small>Tout le monde en parle ! Divertissements, spectacles, magazines. Retrouvez à volonté les stars d’aujourd’hui et de demain.</small></a></h3>
+        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]})|replace({'//www.myskreen.com/' : ''}) }}">{% endif %}Le meilleur des magazines<small>Tout le monde en parle ! Divertissements, spectacles, magazines. Retrouvez à volonté les stars d’aujourd’hui et de demain.</small></a></h3>
         {% elseif slider.id == 7845082 %}
-        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]}) }}">{% endif %}Des séries à l'infini<small>Fini les séries gâchées par un épisode raté : faites votre programmation pour ne plus rien manquer des franchises événements.</small></a></h3>
+        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]})|replace({'//www.myskreen.com/' : ''}) }}">{% endif %}Des séries à l'infini<small>Fini les séries gâchées par un épisode raté : faites votre programmation pour ne plus rien manquer des franchises événements.</small></a></h3>
         {% else %}
-        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]}) }}">{% endif %}{{ slider.title|replace({'<small>': '<br/><small>'})|raw }}{% if slider.seo_url is defined %}</a>{% endif %}</h3>
+        <h3{% if slider.id is defined %} id="{{ slider.id }}-title"{% endif %}>{% if slider.seo_url is defined %}<a href="{{ path('any_url', {url: base_url ~ slider.seo_url[1:slider.seo_url|length-1]})|replace({'//www.myskreen.com/' : ''}) }}">{% endif %}{{ slider.title|replace({'<small>': '<br/><small>'})|raw }}{% if slider.seo_url is defined %}</a>{% endif %}</h3>
       {#% include 'SkreenHouseFactoryV3Bundle:Main:_slider.html.twig' with {slider: slider} %#}
         {% endif %}
       </div>
@@ -59,7 +59,7 @@
   </div>
   <br/>
   <br/>
-  <p align="right" class="footer-myskreen"><a href="http://www.myskreen.com/programme-tv">Replay TV</a> avec <a href="http://www.myskreen.com">mySkreen</a></p>
+  <p align="right" class="footer-myskreen"><a href="http://www.myskreen.com/replay/">Replay TV</a> avec <a href="http://www.myskreen.com">mySkreen</a></p>
 </div>
 
 {#
