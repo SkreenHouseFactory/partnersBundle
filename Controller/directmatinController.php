@@ -26,6 +26,7 @@ class DirectmatinController extends Controller
   */
   public function mainAction(Request $request)
   {
+    
     $layout = dirname(__FILE__) . '/../Resources/views/directmatin.html.twig';
     @unlink($layout);
 
@@ -41,8 +42,6 @@ class DirectmatinController extends Controller
     ));
    //echo $api->url;
    //print_r($datas);
-
-
 
     $page = file_get_contents('http://www.directmatin.fr/myskreen');
     //echo $page; exit;
